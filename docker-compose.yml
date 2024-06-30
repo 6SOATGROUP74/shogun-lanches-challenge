@@ -5,14 +5,14 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: igoryy/fiap-6soat:latest
+    image: tech-challeng:1
     container_name: springboot-lanchonete
     restart: on-failure
     environment:
-      - DB_HOST=mysql
-      - DB_PORT=3306
-      - DB_USER=user_main
-      - DB_PASSWORD=user_main
+      - DB_HOST
+      - DB_PORT
+      - DB_USER
+      - DB_PASSWORD
     ports:
       - "8080:8080"
     depends_on:
