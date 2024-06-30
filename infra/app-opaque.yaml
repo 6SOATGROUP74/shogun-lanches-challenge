@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: app-opaque
+type: Opaque
+stringData:
+  USERNAME: user_main
+  PASSWORD: user_main
+  PASSWORD_ROOT: root

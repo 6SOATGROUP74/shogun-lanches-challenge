@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: mysql-opaque
+type: Opaque
+stringData:
+  USERNAME: user_main
+  PASSWORD: user_main
+  PASSWORD_ROOT: root

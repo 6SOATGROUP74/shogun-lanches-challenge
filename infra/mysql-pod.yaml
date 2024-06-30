@@ -14,14 +14,23 @@ spec:
       ports:
         - containerPort: 3306
       env:
-        - name: MYSQL_ROOT_PASSWORD
-          value: root
         - name: MYSQL_DATABASE
           value: db_soat
         - name: MYSQL_USER
-          value: user_main
+          valueFrom:
+            secretKeyRef:
+              name: mysql-opaque
+              key: USERNAME
         - name: MYSQL_PASSWORD
-          value: user_main
+          valueFrom:
+            secretKeyRef:
+              name: mysql-opaque
+              key: PASSWORD
+        - name: MYSQL_ROOT_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mysql-opaque
+              key: PASSWORD_ROOT
   volumes:
     - name: mysql-persistent-storage
       persistentVolumeClaim:

@@ -11,6 +11,6 @@ spec:
       imagePullPolicy: Always
       ports:
         - containerPort: 8080
-      envFrom:
+      env:
         - configMapRef:
             name: app-configmap
