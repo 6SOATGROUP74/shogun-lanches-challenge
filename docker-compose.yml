@@ -5,7 +5,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: tech-challeng:1
+    image: igoryy/fiap-6soat:latest
     container_name: springboot-lanchonete
     restart: on-failure
     environment:
