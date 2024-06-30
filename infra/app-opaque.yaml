@@ -4,6 +4,5 @@ metadata:
   name: app-opaque
 type: Opaque
 stringData:
-  USERNAME: user_main
-  PASSWORD: user_main
-  PASSWORD_ROOT: root
+  DB_USER: tech_user
+  DB_PASSWORD: tech_password

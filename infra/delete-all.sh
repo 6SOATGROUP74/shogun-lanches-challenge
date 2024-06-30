@@ -1,1 +1,2 @@
-kubectl delete --all pod,svc
+#!/bin/bash
+kubectl delete --all pod,svc,pvc,pv,secret,configmap

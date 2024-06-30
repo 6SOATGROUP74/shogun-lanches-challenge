@@ -20,17 +20,17 @@ spec:
           valueFrom:
             secretKeyRef:
               name: mysql-opaque
-              key: USERNAME
+              key: MYSQL_USER
         - name: MYSQL_PASSWORD
           valueFrom:
             secretKeyRef:
               name: mysql-opaque
-              key: PASSWORD
+              key: MYSQL_PASSWORD
         - name: MYSQL_ROOT_PASSWORD
           valueFrom:
             secretKeyRef:
               name: mysql-opaque
-              key: PASSWORD_ROOT
+              key: MYSQL_ROOT_PASSWORD
   volumes:
     - name: mysql-persistent-storage
       persistentVolumeClaim:
