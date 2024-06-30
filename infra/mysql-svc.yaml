@@ -3,10 +3,9 @@ kind: Service
 metadata:
   name: mysql-svc
 spec:
-  type: NodePort
+  type: ClusterIP
   ports:
     - port: 3306
       targetPort: 3306
-      nodePort: 30036
   selector:
     app: mysql-pod
