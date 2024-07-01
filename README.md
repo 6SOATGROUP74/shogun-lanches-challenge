@@ -28,9 +28,9 @@ Solucionar o problema, a lanchonete irá investir em um sistema de autoatendimen
 ## Setup aplicação
 - Clone o repositório:
 
-  	> git clone https://github.com/leandroibraim/tech_challenge_fiap_6soat.git
+  	> git clone https://github.com/igusvs/shogun-lanches-challenge.git
 
-  	> cd tech_challenge_fiap_6soat
+  	> cd shogun-lanches-challenge
 
 - Inicie o docker-compose:
 
@@ -45,7 +45,7 @@ Solucionar o problema, a lanchonete irá investir em um sistema de autoatendimen
 
 ## Swagger 
  Link de acesso a documentacao do swagger
-> http://localhost:8080/swagger-ui/index.html
+> http://localhost:30000/swagger-ui/index.html
 
 ## Integrantes - Grupo 44
 
@@ -53,12 +53,6 @@ Solucionar o problema, a lanchonete irá investir em um sistema de autoatendimen
 
 - Rodrigo Seiji Campos Imai - RM 353766
 
-- Rodrigo da Silva Figueiredo - RM 354438
-
-- Eduardo de Matos Almeida - RM 355917
-
-- Leandro Ibraim Reis - RM 354381
-
 ## Contribuidores
 
-<a href="https://github.com/leandroibraim/tech_challenge_fiap_6soat/graphs/contributors"><img src="https://contrib.rocks/image?repo=leandroibraim/tech_challenge_fiap_6soat"/></a>
+<a href="https://github.com/igusvs/shogun-lanches-challenge/graphs/contributors"><img src="https://contrib.rocks/image?repo=igusvs/shogun-lanches-challenge"/></a>
