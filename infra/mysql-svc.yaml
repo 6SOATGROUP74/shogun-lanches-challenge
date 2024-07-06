@@ -9,3 +9,16 @@ spec:
       targetPort: 3306
   selector:
     app: mysql-pod
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysql-svc-node
+spec:
+  type: NodePort
+  ports:
+    - port: 3306
+      targetPort: 3306
+      nodePort: 32000
+  selector:
+    app: mysql-pod
