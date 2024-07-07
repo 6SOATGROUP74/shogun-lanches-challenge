@@ -108,9 +108,9 @@
 				<artifactId>flyway-maven-plugin</artifactId>
 				<version>10.13.0</version>
 				<configuration>
-				<url>${MYSQL_URL}</url>
-				<user>root</user>
-				<password>root</password>
+				<url>jdbc:mysql://localhost:3306/db_soat</url>
+				<user>tech_user</user>
+				<password>tech_password</password>
 				</configuration>
 			</plugin>
 			<plugin>
