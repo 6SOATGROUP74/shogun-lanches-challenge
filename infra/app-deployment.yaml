@@ -53,3 +53,6 @@ spec:
             initialDelaySeconds: 30
             failureThreshold: 3
             periodSeconds: 10
+          resources:
+            requests:
+              cpu: "20m"
