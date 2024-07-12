@@ -36,6 +36,7 @@ public interface PedidoEntityMapper {
         entity.getComposicao().forEach(item -> {
             item.setPedido(entity);
         });
+        entity.setCodReferenciaPedido(pedido.getCodReferenciaPedido());
 
         return entity;
 

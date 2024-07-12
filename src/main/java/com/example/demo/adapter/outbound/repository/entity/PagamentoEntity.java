@@ -17,7 +17,7 @@ public class PagamentoEntity {
     @Column(name = "id_pagamento")
     private Long idPagamento;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne
     @JoinColumn(name = "numero_pedido")
     private PedidoEntity pedidoEntity;
 
@@ -32,5 +32,8 @@ public class PagamentoEntity {
 
     @Column(name = "data_pagamento")
     private String dataPagamento;
+
+    @Column(name = "cod_pagamento")
+    private String codPagamento;
 
 }

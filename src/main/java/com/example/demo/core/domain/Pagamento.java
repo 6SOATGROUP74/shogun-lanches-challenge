@@ -10,7 +10,15 @@ public class Pagamento {
     private BigDecimal valorTotal;
     private String tipoDoPagamento;
     private Pedido pedido;
+    private String codPagamento;
 
+    public String getCodPagamento() {
+        return codPagamento;
+    }
+
+    public void setCodPagamento(String codPagamento) {
+        this.codPagamento = codPagamento;
+    }
 
     public String getStatus() {
         return status;

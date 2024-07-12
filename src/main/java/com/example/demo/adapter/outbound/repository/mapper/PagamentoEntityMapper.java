@@ -31,7 +31,7 @@ public interface PagamentoEntityMapper {
     @AfterMapping
     default PagamentoEntity afterMapping(@MappingTarget PagamentoEntity target, Pagamento pagamento){
         target.getPedidoEntity().setPagamentoEntity(target);
+        target.setCodPagamento(pagamento.getCodPagamento());
         return target;
-
     }
 }
