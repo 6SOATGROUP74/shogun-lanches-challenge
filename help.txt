@@ -1,0 +1,17 @@
+#Build image docker
+docker build -t igoryy/fiap-6soat:2 .
+
+#Push image docker
+docker push igoryy/fiap-6soat:2
+
+#Template Cloudformation eks
+https://s3.us-west-2.amazonaws.com/amazon-eks/cloudformation/2020-10-29/amazon-eks-vpc-private-subnets.yaml
+
+#serviceaccount  k8s
+kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
+
+
+
+aws eks update-kubeconfig --region us-east-1 --name shogun-cluster
+
+sh-4.2$ mysql -h shogun-database.c17nopx11l6k.us-east-1.rds.amazonaws.com -u admin -pusuarioshogun

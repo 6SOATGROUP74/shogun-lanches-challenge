@@ -47,4 +47,13 @@ public class ProdutoController {
         return ResponseEntity.ok().build();
     }
 
+
+    @PostMapping("/teste")
+    public ResponseEntity<?> testeWeb(String string){
+
+        System.out.println(string);
+
+        return ResponseEntity.ok().build();
+    }
+
 }
