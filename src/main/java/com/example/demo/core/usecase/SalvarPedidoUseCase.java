@@ -8,6 +8,7 @@ import com.example.demo.core.ports.outbound.pedido.SalvarPedidoAdapterPort;
 import com.example.demo.core.ports.outbound.produto.GerenciarProdutoAdapterPort;
 
 import java.util.Objects;
+import java.util.UUID;
 
 public class SalvarPedidoUseCase implements SalvarPedidoUseCasePort {
 
@@ -40,6 +41,7 @@ public class SalvarPedidoUseCase implements SalvarPedidoUseCasePort {
             valorTotal += composicao.getQuantidade() * composicao.getPrecoUnitario();
         }
 
+        pedido.setCodReferenciaPedido(UUID.randomUUID().toString());
         pedido.setValorTotal(valorTotal);
         pedido.setEtapa("RECEBIDO");
 

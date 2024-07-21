@@ -42,4 +42,9 @@ public class PedidoEntity {
     @JoinColumn(name = "id_pagamento")
     private PagamentoEntity pagamentoEntity;
 
+    @Column(name = "cod_pedido")
+    private String codPedido;
+
+    @Column(name = "cod_referencia_pedido")
+    private String codReferenciaPedido;
 }

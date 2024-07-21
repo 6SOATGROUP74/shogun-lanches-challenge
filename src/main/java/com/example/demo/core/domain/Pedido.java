@@ -12,6 +12,24 @@ public class Pedido {
     private String etapa;
     private Long idPagamento;
     private String dataPedido;
+    private String codPedido;
+    private String codReferenciaPedido;
+
+    public String getCodReferenciaPedido() {
+        return codReferenciaPedido;
+    }
+
+    public void setCodReferenciaPedido(String codReferenciaPedido) {
+        this.codReferenciaPedido = codReferenciaPedido;
+    }
+
+    public String getCodPedido() {
+        return codPedido;
+    }
+
+    public void setCodPedido(String codPedido) {
+        this.codPedido = codPedido;
+    }
 
     public String getStatus() {
         return status;

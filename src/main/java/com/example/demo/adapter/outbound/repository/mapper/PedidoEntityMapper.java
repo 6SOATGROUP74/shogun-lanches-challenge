@@ -11,6 +11,7 @@ import org.mapstruct.factory.Mappers;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.Optional;
 
 @Mapper(uses = ComposicaoEntityMapper.class)
 public interface PedidoEntityMapper {
@@ -36,8 +37,11 @@ public interface PedidoEntityMapper {
         entity.getComposicao().forEach(item -> {
             item.setPedido(entity);
         });
+        entity.setCodReferenciaPedido(pedido.getCodReferenciaPedido());
 
         return entity;
 
     }
+
+    Pedido mapFrom(Optional<PedidoEntity> pedidoEntity);
 }

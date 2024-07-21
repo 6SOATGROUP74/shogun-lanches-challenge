@@ -10,7 +10,33 @@ public class Pagamento {
     private BigDecimal valorTotal;
     private String tipoDoPagamento;
     private Pedido pedido;
+    private String codPagamento;
+    private String copiaCola;
+    private String qrCodeLink;
 
+    public String getCopiaCola() {
+        return copiaCola;
+    }
+
+    public void setCopiaCola(String copiaCola) {
+        this.copiaCola = copiaCola;
+    }
+
+    public String getQrCodeLink() {
+        return qrCodeLink;
+    }
+
+    public void setQrCodeLink(String qrCodeLink) {
+        this.qrCodeLink = qrCodeLink;
+    }
+
+    public String getCodPagamento() {
+        return codPagamento;
+    }
+
+    public void setCodPagamento(String codPagamento) {
+        this.codPagamento = codPagamento;
+    }
 
     public String getStatus() {
         return status;
