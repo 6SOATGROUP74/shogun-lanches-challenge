@@ -5,7 +5,7 @@ metadata:
   labels:
     app: app-deployment
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       app: app-pod
@@ -51,8 +51,8 @@ spec:
               path: actuator/health
               port: 8080
             initialDelaySeconds: 30
-            failureThreshold: 3
+            failureThreshold: 30
             periodSeconds: 10
           resources:
             requests:
-              cpu: "20m"
+              cpu: 0.1
