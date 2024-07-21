@@ -27,7 +27,7 @@ public class PagarPedidoUseCase implements PagarPedidoUseCasePort {
     }
 
     @Override
-    public void checkout(Pagamento pagamento) {
+    public Pagamento checkout(Pagamento pagamento) {
 
         Pedido pedido = buscarPedidoAdapterPort.execute(pagamento.getNumeroPedido());
 
@@ -49,5 +49,6 @@ public class PagarPedidoUseCase implements PagarPedidoUseCasePort {
 
         atualizarPedidoAdapterPort.execute(pedido);
 
+        return pagamento;
     }
 }

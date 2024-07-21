@@ -16,6 +16,4 @@ public class PedidoRequest {
 
     @NotNull(message = "O campo obrigatório")
     private List<ComposicaoRequest> composicao;
-
-
 }

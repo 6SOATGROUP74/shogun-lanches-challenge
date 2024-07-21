@@ -36,4 +36,9 @@ public class PagamentoEntity {
     @Column(name = "cod_pagamento")
     private String codPagamento;
 
+    @Column(name = "copia_cola")
+    private String copiaCola;
+
+    @Column(name = "qr_code_link")
+    private String qrCodeLink;
 }

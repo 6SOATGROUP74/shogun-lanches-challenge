@@ -4,8 +4,8 @@ import com.example.demo.adapter.inbound.controller.request.pagamento.PagamentoRe
 import com.example.demo.adapter.inbound.controller.request.pagamento.mapper.PagamentoMapper;
 import com.example.demo.adapter.outbound.integration.pagbank.PagbankClient;
 import com.example.demo.adapter.outbound.integration.pagbank.request.PagbankPagamentoRequest;
-import com.example.demo.adapter.outbound.integration.pagbank.response.PagbankPagamentoResponse;
-import com.example.demo.adapter.outbound.integration.pagbank.response.PagbankStatusPagamentoResponse;
+
+import com.example.demo.core.domain.Pagamento;
 import com.example.demo.core.ports.inbound.pagamento.AlterarStatusPagamentoUseCasePort;
 import com.example.demo.core.ports.inbound.pagamento.PagarPedidoUseCasePort;
 import lombok.AllArgsConstructor;
@@ -49,25 +49,23 @@ public class PagamentoController {
     @PostMapping
     public ResponseEntity<?> realizarPagamento(@RequestBody PagamentoRequest pagamentoRequest) {
 
-        pagarPedidoUseCasePort.checkout(PagamentoMapper.INSTANCE.mapFrom(pagamentoRequest));
+        Pagamento pagamento = pagarPedidoUseCasePort.checkout(PagamentoMapper.INSTANCE.mapFrom(pagamentoRequest));
 
-        return ResponseEntity.status(HttpStatus.CREATED).build();
+        return ResponseEntity.status(HttpStatus.CREATED).body(pagamento);
     }
 
     @GetMapping
-    public ResponseEntity<PagbankStatusPagamentoResponse> consultaStatusPagamento(Long pagamentoId) {
+    public ResponseEntity<Pagamento> consultaStatusPagamento(Long pagamentoId) {
 
-        alterarStatusPagamentoUseCasePort.execute(pagamentoId);
+        Pagamento pagamentoStatus = alterarStatusPagamentoUseCasePort.execute(pagamentoId);
 
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok(pagamentoStatus);
     }
 
-//    @GetMapping
-//    public ResponseEntity<PagbankStatusPagamentoResponse> consultaStatusPagamento(String codigoDoPedido) {
-//
-//        var response = pagbankClient.consultaStatusPagamento(token, codigoDoPedido);
-//
-//        return ResponseEntity.status(response.getStatusCode()).body(response.getBody());
-//    }
+    //TODO ajustar o webhook
+    @PostMapping("/webhook")
+    public ResponseEntity<?> consultaStatusPagamentoWebhook(@RequestBody PagbankPagamentoRequest pagbankPagamentoRequest) {
 
+        return ResponseEntity.status(HttpStatus.CREATED).body(pagbankPagamentoRequest);
+    }
 }

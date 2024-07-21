@@ -30,6 +30,8 @@ public class PagarPedidoPagbankAdapter implements PagarPedidoAdapterPort{
         pagamento.getPedido().setCodPedido(response.getBody().getCodigoDoPagamento());
         pagamento.setTipoDoPagamento("QR Code PagBank");
         pagamento.setStatus("PENDENTE");
+        pagamento.setCopiaCola(response.getBody().getQrCodes().get(0).getCopiaCola());
+        pagamento.setQrCodeLink(response.getBody().getQrCodes().get(0).getLinks().get(0).getLinkDoQRCode());
         return pagamento;
     }
 
@@ -38,7 +40,8 @@ public class PagarPedidoPagbankAdapter implements PagarPedidoAdapterPort{
                 pagamento.getPedido().getCodReferenciaPedido(),
                 new Cliente("Shogun Lanches", "shogunlanches@gmail.com", "78026897000110"),
                 Arrays.asList(new Produto("Ordem de pedido Shogun Lanches", 1L, pagamento.getValorTotal().longValue())),
-                Arrays.asList(new QRCodeRequest(new Total(pagamento.getValorTotal().longValue())))
+                Arrays.asList(new QRCodeRequest(new Total(pagamento.getValorTotal().longValue()))),
+                Arrays.asList("https://meusite.com/webhook")
         );
         return pagbankPagamentoRequest;
     }

@@ -22,6 +22,9 @@ public class QrCodeResponse {
     @JsonProperty("amount")
     private Total total;
 
+    @JsonProperty("text")
+    private String copiaCola;
+
     @JsonProperty("links")
     private List<LinkQRCode> links;
 }

@@ -26,7 +26,7 @@ public class AlterarStatusPagamentoUseCase implements AlterarStatusPagamentoUseC
     }
 
     @Override
-    public void execute(Long pagamentoId) {
+    public Pagamento execute(Long pagamentoId) {
         Pagamento pagamentoAtual = buscarPagamentoAdapterPort.buscar(pagamentoId);
 
         if(Objects.isNull(pagamentoAtual)){
@@ -40,5 +40,7 @@ public class AlterarStatusPagamentoUseCase implements AlterarStatusPagamentoUseC
         pagamentoProcessado.setStatus("APROVADO");
 
         salvarPagamentoAdapterPort.salvar(pagamentoProcessado);
+
+        return pagamentoProcessado;
     }
 }

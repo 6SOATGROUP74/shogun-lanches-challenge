@@ -24,4 +24,7 @@ public class PagbankPagamentoRequest {
 
     @JsonProperty("qr_codes")
     private List<QRCodeRequest> qrCodes;
+
+    @JsonProperty("notification_urls")
+    private List<String> notificationUrls;
 }
