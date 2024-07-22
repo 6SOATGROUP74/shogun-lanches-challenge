@@ -4,9 +4,12 @@ import com.example.demo.adapter.inbound.controller.request.produto.ProdutoReques
 import com.example.demo.adapter.inbound.controller.request.pedido.mapper.ProdutoMapper;
 import com.example.demo.adapter.inbound.controller.response.pedido.mapper.ProdutoResponseMapper;
 import com.example.demo.adapter.inbound.controller.response.produto.ProdutoResponse;
+import com.example.demo.adapter.outbound.integration.pagbank.request.PagbankPagamentoRequest;
 import com.example.demo.core.ports.inbound.produto.GerenciarProdutoUseCasePort;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,6 +20,8 @@ import java.util.List;
 @RequestMapping("/v1/produtos")
 @AllArgsConstructor
 public class ProdutoController {
+
+    private static final Logger logger = LoggerFactory.getLogger(ProdutoController.class);
 
     private final GerenciarProdutoUseCasePort gerenciarProdutoUseCasePort;
 
@@ -49,9 +54,9 @@ public class ProdutoController {
 
 
     @PostMapping("/teste")
-    public ResponseEntity<?> testeWeb(String string){
+    public ResponseEntity<?> testeWeb(String request){
 
-        System.out.println(string);
+        logger.info(request);
 
         return ResponseEntity.ok().build();
     }
