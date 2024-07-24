@@ -7,6 +7,7 @@ import com.example.demo.core.ports.inbound.cliente.IncluirClienteUseCasePort;
 import com.example.demo.core.ports.inbound.cliente.RecuperarClienteUseCasePort;
 import com.example.demo.core.ports.inbound.pagamento.AlterarStatusPagamentoUseCasePort;
 import com.example.demo.core.ports.inbound.pagamento.PagarPedidoUseCasePort;
+import com.example.demo.core.ports.inbound.pagamento.ValidarPagamentoPedidoUseCasePort;
 import com.example.demo.core.ports.inbound.pedido.AlterarPedidoUseCasePort;
 import com.example.demo.core.ports.inbound.pedido.BuscarPedidoUseCasePort;
 import com.example.demo.core.ports.inbound.pedido.ListarPedidosUseCasePort;
@@ -72,5 +73,10 @@ public class BeanConfig {
     @Bean
     public BuscarPedidoUseCasePort buscarPedidoUseCasePort(PedidoRepository pedidoRepository){
         return new BuscarPedidoUseCase(pedidoRepository);
+    }
+
+    @Bean
+    public ValidarPagamentoPedidoUseCasePort validarPagamentoPedidoUseCasePort(ListarPedidosUseCasePort listarPedidosUseCasePort, SalvarPagamentoAdapterPort salvarPagamentoAdapterPort, AtualizarPedidoAdapterPort atualizarPedidoAdapterPort) {
+        return new ValidarPagamentoPedidoUseCase(listarPedidosUseCasePort, salvarPagamentoAdapterPort, atualizarPedidoAdapterPort);
     }
 }

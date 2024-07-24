@@ -21,6 +21,7 @@ public interface PedidoEntityMapper {
     @Mapping(target = "dataPedido", expression = "java(dataHoraAtual())")
     PedidoEntity mapFrom(Pedido pedido);
 
+    @Mapping(target =  "idPagamento", source = "pagamentoEntity.idPagamento")
     Pedido mapFrom(PedidoEntity pedidoEntity);
     List<Pedido> mapFrom(List<PedidoEntity> pedidoEntity);
 
@@ -38,6 +39,8 @@ public interface PedidoEntityMapper {
             item.setPedido(entity);
         });
         entity.setCodReferenciaPedido(pedido.getCodReferenciaPedido());
+        entity.setDataMudancaEtapa(dataHoraAtual());
+        entity.getPagamentoEntity().setIdPagamento(pedido.getIdPagamento());
 
         return entity;
 

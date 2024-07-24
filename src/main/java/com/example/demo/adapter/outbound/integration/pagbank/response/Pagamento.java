@@ -2,11 +2,15 @@ package com.example.demo.adapter.outbound.integration.pagbank.response;
 
 import com.example.demo.adapter.outbound.integration.pagbank.Total;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 @Getter
 @Setter
+@AllArgsConstructor
+@ToString
 public class Pagamento {
 
     @JsonProperty("id")

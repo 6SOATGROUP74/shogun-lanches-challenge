@@ -1,1 +1,109 @@
-{"id":"ORDE_39C8FEC4-06AC-40FC-A234-892714403743","reference_id":"3343e446-8a3f-458d-adcc-817a2ab04ca6","created_at":"2024-07-21T21:26:33.399-03:00","customer":{"name":"Shogun Lanches","email":"shogunlanches@gmail.com","tax_id":"78026897000110"},"items":[{"name":"Ordem de pedido Shogun Lanches","quantity":1,"unit_amount":50}],"qr_codes":[{"id":"QRCO_F336CCD3-CB80-4A05-85F2-5A54F528CA28","expiration_date":"2024-07-22T23:59:59.000-03:00","amount":{"value":50},"text":"00020101021226850014br.gov.bcb.pix2563api-h.pagseguro.com/pix/v2/F336CCD3-CB80-4A05-85F2-5A54F528CA2827600016BR.COM.PAGSEGURO0136F336CCD3-CB80-4A05-85F2-5A54F528CA2852048999530398654040.505802BR5922Rodrigo Seiji Campos I6015Mogi das Cruzes62070503***630491BD","arrangements":["PIX"],"links":[{"rel":"QRCODE.PNG","href":"https://sandbox.api.pagseguro.com/qrcode/QRCO_F336CCD3-CB80-4A05-85F2-5A54F528CA28/png","media":"image/png","type":"GET"},{"rel":"QRCODE.BASE64","href":"https://sandbox.api.pagseguro.com/qrcode/QRCO_F336CCD3-CB80-4A05-85F2-5A54F528CA28/base64","media":"text/plain","type":"GET"}]}],"charges":[{"id":"CHAR_F336CCD3-CB80-4A05-85F2-5A54F528CA28","reference_id":"3343e446-8a3f-458d-adcc-817a2ab04ca6","status":"PAID","created_at":"2024-07-21T21:26:53.545-03:00","paid_at":"2024-07-21T21:26:54.840-03:00","amount":{"value":50,"currency":"BRL","summary":{"total":50,"paid":50,"refunded":0}},"payment_response":{"code":"20000","message":"SUCESSO"},"payment_method":{"type":"PIX","pix":{"notification_id":"NTF_45974AE9-AB62-4816-B5B3-1EE1E63477FA","end_to_end_id":"61c49631829244f8801b9585533020cd","holder":{"name":"API-PIX Payer Mock","tax_id":"***931180**"}}},"links":[{"rel":"SELF","href":"https://internal.sandbox.api.pagseguro.com/charges/CHAR_F336CCD3-CB80-4A05-85F2-5A54F528CA28","media":"application/json","type":"GET"},{"rel":"CHARGE.CANCEL","href":"https://internal.sandbox.api.pagseguro.com/charges/CHAR_F336CCD3-CB80-4A05-85F2-5A54F528CA28/cancel","media":"application/json","type":"POST"}],"metadata":{}}],"notification_urls":["https://webhook.site/31b8d7d8-1c5a-4e8d-a9d0-11d7311be0e4"],"links":[{"rel":"SELF","href":"https://sandbox.api.pagseguro.com/orders/ORDE_39C8FEC4-06AC-40FC-A234-892714403743","media":"application/json","type":"GET"},{"rel":"PAY","href":"https://sandbox.api.pagseguro.com/orders/ORDE_39C8FEC4-06AC-40FC-A234-892714403743/pay","media":"application/json","type":"POST"}]}
+{
+  "id": "ORDE_39C8FEC4-06AC-40FC-A234-892714403743",
+  "reference_id": "3343e446-8a3f-458d-adcc-817a2ab04ca6",
+  "created_at": "2024-07-21T21:26:33.399-03:00",
+  "customer": {
+    "name": "Shogun Lanches",
+    "email": "shogunlanches@gmail.com",
+    "tax_id": "78026897000110"
+  },
+  "items": [
+    {
+      "name": "Ordem de pedido Shogun Lanches",
+      "quantity": 1,
+      "unit_amount": 50
+    }
+  ],
+  "qr_codes": [
+    {
+      "id": "QRCO_F336CCD3-CB80-4A05-85F2-5A54F528CA28",
+      "expiration_date": "2024-07-22T23:59:59.000-03:00",
+      "amount": {
+        "value": 50
+      },
+      "text": "00020101021226850014br.gov.bcb.pix2563api-h.pagseguro.com/pix/v2/F336CCD3-CB80-4A05-85F2-5A54F528CA2827600016BR.COM.PAGSEGURO0136F336CCD3-CB80-4A05-85F2-5A54F528CA2852048999530398654040.505802BR5922Rodrigo Seiji Campos I6015Mogi das Cruzes62070503***630491BD",
+      "arrangements": [
+        "PIX"
+      ],
+      "links": [
+        {
+          "rel": "QRCODE.PNG",
+          "href": "https://sandbox.api.pagseguro.com/qrcode/QRCO_F336CCD3-CB80-4A05-85F2-5A54F528CA28/png",
+          "media": "image/png",
+          "type": "GET"
+        },
+        {
+          "rel": "QRCODE.BASE64",
+          "href": "https://sandbox.api.pagseguro.com/qrcode/QRCO_F336CCD3-CB80-4A05-85F2-5A54F528CA28/base64",
+          "media": "text/plain",
+          "type": "GET"
+        }
+      ]
+    }
+  ],
+  "charges": [
+    {
+      "id": "CHAR_F336CCD3-CB80-4A05-85F2-5A54F528CA28",
+      "reference_id": "3343e446-8a3f-458d-adcc-817a2ab04ca6",
+      "status": "PAID",
+      "created_at": "2024-07-21T21:26:53.545-03:00",
+      "paid_at": "2024-07-21T21:26:54.840-03:00",
+      "amount": {
+        "value": 50,
+        "currency": "BRL",
+        "summary": {
+          "total": 50,
+          "paid": 50,
+          "refunded": 0
+        }
+      },
+      "payment_response": {
+        "code": "20000",
+        "message": "SUCESSO"
+      },
+      "payment_method": {
+        "type": "PIX",
+        "pix": {
+          "notification_id": "NTF_45974AE9-AB62-4816-B5B3-1EE1E63477FA",
+          "end_to_end_id": "61c49631829244f8801b9585533020cd",
+          "holder": {
+            "name": "API-PIX Payer Mock",
+            "tax_id": "***931180**"
+          }
+        }
+      },
+      "links": [
+        {
+          "rel": "SELF",
+          "href": "https://internal.sandbox.api.pagseguro.com/charges/CHAR_F336CCD3-CB80-4A05-85F2-5A54F528CA28",
+          "media": "application/json",
+          "type": "GET"
+        },
+        {
+          "rel": "CHARGE.CANCEL",
+          "href": "https://internal.sandbox.api.pagseguro.com/charges/CHAR_F336CCD3-CB80-4A05-85F2-5A54F528CA28/cancel",
+          "media": "application/json",
+          "type": "POST"
+        }
+      ],
+      "metadata": {}
+    }
+  ],
+  "notification_urls": [
+    "https://webhook.site/31b8d7d8-1c5a-4e8d-a9d0-11d7311be0e4"
+  ],
+  "links": [
+    {
+      "rel": "SELF",
+      "href": "https://sandbox.api.pagseguro.com/orders/ORDE_39C8FEC4-06AC-40FC-A234-892714403743",
+      "media": "application/json",
+      "type": "GET"
+    },
+    {
+      "rel": "PAY",
+      "href": "https://sandbox.api.pagseguro.com/orders/ORDE_39C8FEC4-06AC-40FC-A234-892714403743/pay",
+      "media": "application/json",
+      "type": "POST"
+    }
+  ]
+}

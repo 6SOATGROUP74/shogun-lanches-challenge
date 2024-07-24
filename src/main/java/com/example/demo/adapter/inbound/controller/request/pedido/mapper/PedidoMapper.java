@@ -3,12 +3,14 @@ package com.example.demo.adapter.inbound.controller.request.pedido.mapper;
 import com.example.demo.adapter.inbound.controller.request.pedido.AtualizaPedidoRequest;
 import com.example.demo.adapter.inbound.controller.request.pedido.PedidoRequest;
 import com.example.demo.adapter.outbound.repository.entity.PedidoEntity;
+import com.example.demo.adapter.outbound.repository.mapper.PedidoEntityMapper;
 import com.example.demo.core.domain.Pedido;
 import org.mapstruct.AfterMapping;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
 
+import java.util.List;
 import java.util.Optional;
 
 
@@ -22,4 +24,5 @@ public interface PedidoMapper {
 
     Pedido mapFrom(AtualizaPedidoRequest atualizaPedidoRequest);
 
+    List<PedidoEntity> mapFrom(List<Pedido> pedidos);
 }

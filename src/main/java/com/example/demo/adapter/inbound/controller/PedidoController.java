@@ -26,33 +26,20 @@ import java.util.List;
 @AllArgsConstructor
 public class PedidoController {
 
-    @Autowired
-    private final PedidoRepository pedidoRepository;
-
     private final ListarPedidosUseCasePort listarPedidosUseCasePort;
     private final SalvarPedidoUseCasePort salvarPedidoUseCasePort;
     private final AlterarPedidoUseCasePort alterarPedidoUseCasePort;
 
     @GetMapping
-    public ResponseEntity<List<PedidoResponse>> listarPedidos() {
+    public ResponseEntity<?> listarPedidos() {
         return ResponseEntity.ok()
-                .body(PedidoResponseMapper.INSTANCE.mapFrom(
-                        listarPedidosUseCasePort.execute()));
+                .body(PedidoMapper.INSTANCE.mapFrom(listarPedidosUseCasePort.listarOrdenados()));
     }
 
     @PostMapping
     public ResponseEntity<?> salvarPedido(@RequestBody @Valid PedidoRequest request) {
         salvarPedidoUseCasePort.execute(PedidoMapper.INSTANCE.mapFrom(request));
         return ResponseEntity.status(HttpStatus.CREATED).build();
-    }
-
-    @GetMapping("/ordenado")
-    public ResponseEntity<?> testePedidos() {
-
-        List<PedidoEntity> pedidos = pedidoRepository.ordenaPedidos();
-
-        return ResponseEntity.ok()
-                .body(PedidoEntityMapper.INSTANCE.mapFrom(pedidos));
     }
 
     @PostMapping("/atualiza")

@@ -18,4 +18,14 @@ public class ListarPedidosUseCase implements ListarPedidosUseCasePort {
     public List<Pedido> execute(){
         return listarPedidosAdapterPort.listarTodosPedidos();
     }
+
+    @Override
+    public List<Pedido> listarOrdenados() {
+        return listarPedidosAdapterPort.listarPedidosOrdenados();
+    }
+
+    @Override
+    public Pedido listarPorCodReferencia(String codReferencia) {
+        return listarPedidosAdapterPort.buscarPedidoPorCodReferencia(codReferencia);
+    }
 }

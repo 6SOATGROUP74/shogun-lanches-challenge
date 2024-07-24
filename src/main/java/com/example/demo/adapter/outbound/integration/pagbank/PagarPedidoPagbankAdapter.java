@@ -41,7 +41,7 @@ public class PagarPedidoPagbankAdapter implements PagarPedidoAdapterPort{
                 new Cliente("Shogun Lanches", "shogunlanches@gmail.com", "78026897000110"),
                 Arrays.asList(new Produto("Ordem de pedido Shogun Lanches", 1L, pagamento.getValorTotal().longValue())),
                 Arrays.asList(new QRCodeRequest(new Total(pagamento.getValorTotal().longValue()))),
-                Arrays.asList("https://webhook.site/31b8d7d8-1c5a-4e8d-a9d0-11d7311be0e4")
+                Arrays.asList("https://webhook.site/9ee42903-160b-4707-8c01-a5ebab9a92ef")
         );
         return pagbankPagamentoRequest;
     }
