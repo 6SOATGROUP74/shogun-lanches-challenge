@@ -1,5 +1,6 @@
 package com.example.demo.adapter.inbound.controller;
 
+import com.example.demo.DemoApplication;
 import com.example.demo.adapter.inbound.controller.request.pagamento.PagamentoRequest;
 import com.example.demo.adapter.inbound.controller.request.pagamento.mapper.PagamentoMapper;
 import com.example.demo.adapter.outbound.integration.BuscarPagamentoAdapter;
@@ -14,8 +15,8 @@ import com.example.demo.core.ports.inbound.pagamento.PagarPedidoUseCasePort;
 import com.example.demo.core.ports.inbound.pagamento.ValidarPagamentoPedidoUseCasePort;
 import com.example.demo.core.ports.inbound.pedido.ListarPedidosUseCasePort;
 import lombok.AllArgsConstructor;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
@@ -32,6 +33,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class PagamentoController {
 
     //TODO Ajustar código após testes
+
+    private static final Logger logger = LogManager.getLogger(PagamentoController.class);
 
     @Autowired
     PagbankClient pagbankClient;
@@ -50,6 +53,7 @@ public class PagamentoController {
 
     @Value("${pagbank.token}")
     String token;
+
     @Autowired
     private BuscarPagamentoAdapter buscarPagamentoAdapter;
 
@@ -95,5 +99,5 @@ public class PagamentoController {
         return ResponseEntity.status(HttpStatus.CREATED).body(PagamentoMapper.INSTANCE.mapFrom(pagbankPagamentoRequest));
     }
 
-    private Logger logger = LoggerFactory.getLogger(PagamentoController.class);
+
 }

@@ -14,6 +14,8 @@ import com.example.demo.core.ports.inbound.pedido.ListarPedidosUseCasePort;
 import com.example.demo.core.ports.inbound.pedido.SalvarPedidoUseCasePort;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -30,6 +32,8 @@ public class PedidoController {
     private final SalvarPedidoUseCasePort salvarPedidoUseCasePort;
     private final AlterarPedidoUseCasePort alterarPedidoUseCasePort;
 
+    private static final Logger logger = LogManager.getLogger(PedidoController.class);
+
     @GetMapping
     public ResponseEntity<?> listarPedidos() {
         return ResponseEntity.ok()
@@ -38,6 +42,8 @@ public class PedidoController {
 
     @PostMapping
     public ResponseEntity<?> salvarPedido(@RequestBody @Valid PedidoRequest request) {
+
+        logger.info("teste");
         salvarPedidoUseCasePort.execute(PedidoMapper.INSTANCE.mapFrom(request));
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
