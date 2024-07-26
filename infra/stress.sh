@@ -1,5 +1,5 @@
 #!/bin/bash
 for i in {1..10000}; do
-  curl a3185ec998f53407a8abe8a9514cf407-2073599187.us-east-1.elb.amazonaws.com
+  curl http://ac811e7179f834f63ba25b7fd130ce96-1761275612.us-east-1.elb.amazonaws.com/v1/pedidos
   sleep $1
 done
