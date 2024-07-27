@@ -1,7 +1,6 @@
 package com.example.demo.adapter.outbound.integration;
 
 import com.example.demo.adapter.outbound.repository.PagamentoRepository;
-import com.example.demo.adapter.outbound.repository.entity.PagamentoEntity;
 import com.example.demo.adapter.outbound.repository.mapper.PagamentoEntityMapper;
 import com.example.demo.core.domain.Pagamento;
 import com.example.demo.core.ports.outbound.pagamento.SalvarPagamentoAdapterPort;

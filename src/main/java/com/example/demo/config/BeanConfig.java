@@ -1,7 +1,7 @@
 package com.example.demo.config;
 
-import com.example.demo.adapter.outbound.integration.pagbank.ProcessaStatusPagamentoPagbankAdapter;
 import com.example.demo.adapter.outbound.integration.pagbank.PagarPedidoPagbankAdapter;
+import com.example.demo.adapter.outbound.integration.pagbank.ProcessaStatusPagamentoPagbankAdapter;
 import com.example.demo.adapter.outbound.repository.PedidoRepository;
 import com.example.demo.core.ports.inbound.cliente.IncluirClienteUseCasePort;
 import com.example.demo.core.ports.inbound.cliente.RecuperarClienteUseCasePort;
@@ -17,9 +17,21 @@ import com.example.demo.core.ports.outbound.cliente.IncluirClienteAdapterPort;
 import com.example.demo.core.ports.outbound.cliente.RecuperarClienteAdapterPort;
 import com.example.demo.core.ports.outbound.pagamento.BuscarPagamentoAdapterPort;
 import com.example.demo.core.ports.outbound.pagamento.SalvarPagamentoAdapterPort;
-import com.example.demo.core.ports.outbound.pedido.*;
+import com.example.demo.core.ports.outbound.pedido.AtualizarPedidoAdapterPort;
+import com.example.demo.core.ports.outbound.pedido.BuscarPedidoAdapterPort;
+import com.example.demo.core.ports.outbound.pedido.ListarPedidosAdapterPort;
+import com.example.demo.core.ports.outbound.pedido.SalvarPedidoAdapterPort;
 import com.example.demo.core.ports.outbound.produto.GerenciarProdutoAdapterPort;
-import com.example.demo.core.usecase.*;
+import com.example.demo.core.usecase.AlterarPedidoUseCase;
+import com.example.demo.core.usecase.AlterarStatusPagamentoUseCase;
+import com.example.demo.core.usecase.BuscarPedidoUseCase;
+import com.example.demo.core.usecase.GerenciarProdutoUseCase;
+import com.example.demo.core.usecase.IncluirClienteUseCase;
+import com.example.demo.core.usecase.ListarPedidosUseCase;
+import com.example.demo.core.usecase.PagarPedidoUseCase;
+import com.example.demo.core.usecase.RecuperarClienteUseCase;
+import com.example.demo.core.usecase.SalvarPedidoUseCase;
+import com.example.demo.core.usecase.ValidarPagamentoPedidoUseCase;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -76,7 +88,7 @@ public class BeanConfig {
     }
 
     @Bean
-    public ValidarPagamentoPedidoUseCasePort validarPagamentoPedidoUseCasePort(ListarPedidosUseCasePort listarPedidosUseCasePort, SalvarPagamentoAdapterPort salvarPagamentoAdapterPort, AtualizarPedidoAdapterPort atualizarPedidoAdapterPort) {
-        return new ValidarPagamentoPedidoUseCase(listarPedidosUseCasePort, salvarPagamentoAdapterPort, atualizarPedidoAdapterPort);
+    public ValidarPagamentoPedidoUseCasePort validarPagamentoPedidoUseCasePort(ListarPedidosUseCasePort listarPedidosUseCasePort, SalvarPagamentoAdapterPort salvarPagamentoAdapterPort, AtualizarPedidoAdapterPort atualizarPedidoAdapterPort, BuscarPagamentoAdapterPort buscarPagamentoAdapterPort) {
+        return new ValidarPagamentoPedidoUseCase(listarPedidosUseCasePort, buscarPagamentoAdapterPort, salvarPagamentoAdapterPort, atualizarPedidoAdapterPort);
     }
 }

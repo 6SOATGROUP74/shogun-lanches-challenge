@@ -20,4 +20,5 @@ public class PagbankWebhookRequest {
 
     @JsonProperty("charges")
     private List<Pagamento> pagamentos;
+
 }

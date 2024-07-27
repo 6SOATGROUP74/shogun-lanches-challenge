@@ -41,9 +41,6 @@ public interface PedidoEntityMapper {
         entity.setCodReferenciaPedido(pedido.getCodReferenciaPedido());
         entity.setDataMudancaEtapa(dataHoraAtual());
 
-       //TODO Causa do null pointer
-        // entity.getPagamentoEntity().setIdPagamento(pedido.getIdPagamento());
-
         return entity;
 
     }

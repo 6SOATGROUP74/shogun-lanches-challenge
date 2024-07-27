@@ -4,7 +4,6 @@ import com.example.demo.core.domain.Cliente;
 import com.example.demo.core.domain.exception.ClienteNotFoundException;
 import com.example.demo.core.ports.inbound.cliente.RecuperarClienteUseCasePort;
 import com.example.demo.core.ports.outbound.cliente.RecuperarClienteAdapterPort;
-import lombok.AllArgsConstructor;
 
 import java.util.Objects;
 

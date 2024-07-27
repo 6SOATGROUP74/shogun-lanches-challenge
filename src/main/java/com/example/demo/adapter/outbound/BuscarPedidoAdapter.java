@@ -1,7 +1,6 @@
 package com.example.demo.adapter.outbound;
 
 import com.example.demo.adapter.outbound.repository.PedidoRepository;
-import com.example.demo.adapter.outbound.repository.ProdutoRepository;
 import com.example.demo.adapter.outbound.repository.mapper.PedidoEntityMapper;
 import com.example.demo.core.domain.Pedido;
 import com.example.demo.core.ports.outbound.pedido.BuscarPedidoAdapterPort;

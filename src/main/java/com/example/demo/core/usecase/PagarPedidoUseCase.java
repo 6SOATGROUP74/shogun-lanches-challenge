@@ -39,7 +39,6 @@ public class PagarPedidoUseCase implements PagarPedidoUseCasePort {
         pagamento.setValorTotal(BigDecimal.valueOf(pedido.getValorTotal()));
         final Pagamento pagamentoProcessado = pagarPedidoPagbankAdapter.pagar(pagamento);
 
-        pedido.setEtapa("EM_PREPARACAO");
         pagamentoProcessado.setNumeroPedido(pedido.getNumeroPedido());
         pagamentoProcessado.setPedido(pedido);
 

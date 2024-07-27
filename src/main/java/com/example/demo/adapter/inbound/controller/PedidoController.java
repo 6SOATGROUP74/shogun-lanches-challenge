@@ -2,12 +2,7 @@ package com.example.demo.adapter.inbound.controller;
 
 import com.example.demo.adapter.inbound.controller.request.pedido.AtualizaPedidoRequest;
 import com.example.demo.adapter.inbound.controller.request.pedido.PedidoRequest;
-import com.example.demo.adapter.inbound.controller.response.pedido.PedidoResponse;
 import com.example.demo.adapter.inbound.controller.request.pedido.mapper.PedidoMapper;
-import com.example.demo.adapter.inbound.controller.response.pedido.mapper.PedidoResponseMapper;
-import com.example.demo.adapter.outbound.repository.PedidoRepository;
-import com.example.demo.adapter.outbound.repository.entity.PedidoEntity;
-import com.example.demo.adapter.outbound.repository.mapper.PedidoEntityMapper;
 import com.example.demo.core.domain.Pedido;
 import com.example.demo.core.ports.inbound.pedido.AlterarPedidoUseCasePort;
 import com.example.demo.core.ports.inbound.pedido.ListarPedidosUseCasePort;
@@ -16,12 +11,13 @@ import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/v1/pedidos")
@@ -51,7 +47,7 @@ public class PedidoController {
     @PostMapping("/atualiza")
     public ResponseEntity<?> atualizaPedido(@RequestBody AtualizaPedidoRequest atualizaPedidoRequest) {
 
-        //TODO Configurar os retornos
+        //TODO Configurar os retornos e também ajustar o id do pagamento que está acabando
         Pedido pedidoAlterado = PedidoMapper.INSTANCE.mapFrom(atualizaPedidoRequest);
 
         alterarPedidoUseCasePort.execute(pedidoAlterado);

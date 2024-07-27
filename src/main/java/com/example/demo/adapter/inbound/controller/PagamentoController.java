@@ -1,22 +1,17 @@
 package com.example.demo.adapter.inbound.controller;
 
-import com.example.demo.DemoApplication;
 import com.example.demo.adapter.inbound.controller.request.pagamento.PagamentoRequest;
 import com.example.demo.adapter.inbound.controller.request.pagamento.mapper.PagamentoMapper;
-import com.example.demo.adapter.outbound.integration.BuscarPagamentoAdapter;
-import com.example.demo.adapter.outbound.integration.pagbank.PagbankClient;
-
 import com.example.demo.adapter.outbound.integration.pagbank.request.PagbankWebhookRequest;
-import com.example.demo.adapter.outbound.repository.mapper.PagamentoEntityMapper;
-import com.example.demo.adapter.outbound.repository.mapper.PedidoEntityMapper;
 import com.example.demo.core.domain.Pagamento;
 import com.example.demo.core.ports.inbound.pagamento.AlterarStatusPagamentoUseCasePort;
 import com.example.demo.core.ports.inbound.pagamento.PagarPedidoUseCasePort;
 import com.example.demo.core.ports.inbound.pagamento.ValidarPagamentoPedidoUseCasePort;
 import com.example.demo.core.ports.inbound.pedido.ListarPedidosUseCasePort;
+import com.example.demo.core.ports.outbound.pagamento.BuscarPagamentoAdapterPort;
 import lombok.AllArgsConstructor;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
@@ -34,11 +29,6 @@ public class PagamentoController {
 
     //TODO Ajustar código após testes
 
-    private static final Logger logger = LogManager.getLogger(PagamentoController.class);
-
-    @Autowired
-    PagbankClient pagbankClient;
-
     @Autowired
     private PagarPedidoUseCasePort pagarPedidoUseCasePort;
 
@@ -51,11 +41,11 @@ public class PagamentoController {
     @Autowired
     private ValidarPagamentoPedidoUseCasePort validarPagamentoPedidoUseCasePort;
 
+    @Autowired
+    private BuscarPagamentoAdapterPort buscarPagamentoAdapterPort;
+
     @Value("${pagbank.token}")
     String token;
-
-    @Autowired
-    private BuscarPagamentoAdapter buscarPagamentoAdapter;
 
     public PagamentoController() {
     }
@@ -70,6 +60,7 @@ public class PagamentoController {
         this.token = token;
     }
 
+    // TODO exportar para o controler de pedido
     @PostMapping
     public ResponseEntity<?> realizarPagamento(@RequestBody PagamentoRequest pagamentoRequest) {
 
@@ -78,12 +69,21 @@ public class PagamentoController {
         return ResponseEntity.status(HttpStatus.CREATED).body(pagamento);
     }
 
-    @GetMapping
-    public ResponseEntity<Pagamento> consultaStatusPagamento(Long pagamentoId) {
+    //TODO trazer somente o status do pagamento
+    @GetMapping("/fake")
+    public ResponseEntity<Pagamento> consultaStatusPagamentoSemWebhook(Long pagamentoId) {
 
         Pagamento pagamentoStatus = alterarStatusPagamentoUseCasePort.execute(pagamentoId);
 
         return ResponseEntity.ok(pagamentoStatus);
+    }
+
+    @GetMapping
+    public ResponseEntity<?> consultaStatusPagamento(Long pagamentoId) {
+
+        Pagamento pagamentoStatus = buscarPagamentoAdapterPort.buscar(pagamentoId);
+
+        return ResponseEntity.ok(pagamentoStatus.getStatus());
     }
 
     //TODO ajustar o webhook
@@ -92,12 +92,12 @@ public class PagamentoController {
 
         logger.info("m=consultaStatusPagamentoWebhook, msg=Recebendo confirmação de status de pagamento do Pagbank, pagbankPagamentoRequest={}", pagbankPagamentoRequest);
 
-//        var pedido = listarPedidosUseCasePort.listarPorCodReferencia(pagbankPagamentoRequest.getPagamentos().get(0).getCodigoReferenciaDoPedido());
-//        var pagamento = buscarPagamentoAdapter.buscar(pedido.getIdPagamento());
-//        validarPagamentoPedidoUseCasePort.execute(pagamento);
+        var pagamento = PagamentoMapper.INSTANCE.mapFrom(pagbankPagamentoRequest);
 
-        return ResponseEntity.status(HttpStatus.CREATED).body(PagamentoMapper.INSTANCE.mapFrom(pagbankPagamentoRequest));
+        validarPagamentoPedidoUseCasePort.execute(pagamento);
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(pagamento);
     }
 
-
+    private Logger logger = LoggerFactory.getLogger(PagamentoController.class);
 }

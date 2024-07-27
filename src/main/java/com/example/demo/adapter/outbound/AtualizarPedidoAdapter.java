@@ -4,7 +4,6 @@ import com.example.demo.adapter.outbound.repository.PedidoRepository;
 import com.example.demo.adapter.outbound.repository.mapper.PedidoEntityMapper;
 import com.example.demo.core.domain.Pedido;
 import com.example.demo.core.ports.outbound.pedido.AtualizarPedidoAdapterPort;
-import com.example.demo.core.ports.outbound.pedido.SalvarPedidoAdapterPort;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

@@ -1,9 +1,7 @@
 package com.example.demo.adapter.outbound.repository.mapper;
 
 import com.example.demo.adapter.outbound.repository.entity.PagamentoEntity;
-import com.example.demo.adapter.outbound.repository.entity.PedidoEntity;
 import com.example.demo.core.domain.Pagamento;
-import com.example.demo.core.domain.Pedido;
 import org.mapstruct.AfterMapping;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
