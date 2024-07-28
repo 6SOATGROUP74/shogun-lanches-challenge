@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: db-deployment
+  labels:
+    app: mysql-pod
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mysql-pod
+  template:
+    metadata:
+      name: mysql-pod
+      labels:
+        app: mysql-pod
+    spec:
+      containers:
+        - name: mysql-container
+          image: mysql:8.0.37-debian
+          imagePullPolicy: IfNotPresent
+          volumeMounts:
+            - mountPath: /var/lib/mysql
+              name: mysql-persistent-storage
+          ports:
+            - containerPort: 3306
+
+          env:
+            - name: MYSQL_DATABASE
+              value: db_soat
+            - name: MYSQL_USER
+              valueFrom:
+                secretKeyRef:
+                  name: mysql-opaque
+                  key: MYSQL_USER
+            - name: MYSQL_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mysql-opaque
+                  key: MYSQL_PASSWORD
+            - name: MYSQL_ROOT_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mysql-opaque
+                  key: MYSQL_ROOT_PASSWORD
+      volumes:
+        - name: mysql-persistent-storage
+          persistentVolumeClaim:
+            claimName: mysql-pvc
