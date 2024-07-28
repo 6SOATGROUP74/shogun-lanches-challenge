@@ -38,3 +38,16 @@ jobs:
 
       - name: Run tests
         run: mvn test
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v5
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: Add changes from CI build
+          branch: ci-build/${{ github.sha }}
+          title: 'CI Build - Add changes'
+          body: |
+            This PR was created automatically by the CI pipeline.
+            - Branch: ${{ github.ref }}
+            - Commit: ${{ github.sha }}
+          base: main
