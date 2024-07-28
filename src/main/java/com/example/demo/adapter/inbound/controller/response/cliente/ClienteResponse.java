@@ -13,5 +13,7 @@ public class ClienteResponse {
     private String email;
     @JsonProperty("id_cliente")
     private Long idCliente;
+    @JsonProperty("data_cadastro")
+    private String dataCadastro;
 
 }

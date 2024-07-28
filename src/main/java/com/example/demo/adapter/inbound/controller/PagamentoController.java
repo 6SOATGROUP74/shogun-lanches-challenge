@@ -2,6 +2,7 @@ package com.example.demo.adapter.inbound.controller;
 
 import com.example.demo.adapter.inbound.controller.request.pagamento.PagamentoRequest;
 import com.example.demo.adapter.inbound.controller.request.pagamento.mapper.PagamentoMapper;
+import com.example.demo.adapter.inbound.controller.response.pagamento.mapper.PagamentoResponseMapper;
 import com.example.demo.adapter.outbound.integration.pagbank.request.PagbankWebhookRequest;
 import com.example.demo.core.domain.Pagamento;
 import com.example.demo.core.ports.inbound.pagamento.PagarPedidoUseCasePort;
@@ -54,7 +55,7 @@ public class PagamentoController {
 
         logger.info("m=consultaStatusPagamento, status=sucess,  msg=Consulta status de pagamento realizada com sucesso, pagamentoId={}", pagamentoId);
 
-        return ResponseEntity.ok().body(pagamentoStatus.getStatus());
+        return ResponseEntity.ok().body(PagamentoResponseMapper.INSTANCE.mapFrom(pagamentoStatus));
     }
 
     @PostMapping("/webhook")
