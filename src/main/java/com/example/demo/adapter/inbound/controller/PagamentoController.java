@@ -54,7 +54,7 @@ public class PagamentoController {
 
         logger.info("m=consultaStatusPagamento, status=sucess,  msg=Consulta status de pagamento realizada com sucesso, pagamentoId={}", pagamentoId);
 
-        return ResponseEntity.ok(pagamentoStatus.getStatus());
+        return ResponseEntity.ok().body(pagamentoStatus.getStatus());
     }
 
     @PostMapping("/webhook")

@@ -1,6 +1,0 @@
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: app-configmap
-data:
-  MYSQL_URL: jdbc:mysql://mysql-svc/db_soat?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC

@@ -28,6 +28,4 @@ public class ComposicaoEntity {
     @ManyToOne
     @JoinColumn(name = "id_produto")
     private ProdutoEntity produto;
-
-
 }

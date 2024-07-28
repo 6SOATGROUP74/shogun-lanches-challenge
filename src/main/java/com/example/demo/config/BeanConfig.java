@@ -10,6 +10,7 @@ import com.example.demo.core.ports.inbound.pagamento.PagarPedidoUseCasePort;
 import com.example.demo.core.ports.inbound.pagamento.ValidarPagamentoPedidoUseCasePort;
 import com.example.demo.core.ports.inbound.pedido.AlterarPedidoUseCasePort;
 import com.example.demo.core.ports.inbound.pedido.BuscarPedidoUseCasePort;
+import com.example.demo.core.ports.inbound.pedido.CriarPedidoUseCasePort;
 import com.example.demo.core.ports.inbound.pedido.ListarPedidosUseCasePort;
 import com.example.demo.core.ports.inbound.pedido.SalvarPedidoUseCasePort;
 import com.example.demo.core.ports.inbound.produto.GerenciarProdutoUseCasePort;
@@ -25,6 +26,7 @@ import com.example.demo.core.ports.outbound.produto.GerenciarProdutoAdapterPort;
 import com.example.demo.core.usecase.AlterarPedidoUseCase;
 import com.example.demo.core.usecase.AlterarStatusPagamentoUseCase;
 import com.example.demo.core.usecase.BuscarPedidoUseCase;
+import com.example.demo.core.usecase.CriarPedidoUseCase;
 import com.example.demo.core.usecase.GerenciarProdutoUseCase;
 import com.example.demo.core.usecase.IncluirClienteUseCase;
 import com.example.demo.core.usecase.ListarPedidosUseCase;
@@ -55,8 +57,8 @@ public class BeanConfig {
     }
 
     @Bean
-    public SalvarPedidoUseCasePort salvarPedidoUseCasePort(SalvarPedidoAdapterPort salvarPedidoAdapterPort, GerenciarProdutoAdapterPort gerenciarProdutoAdapterPort) {
-        return new SalvarPedidoUseCase(salvarPedidoAdapterPort, gerenciarProdutoAdapterPort);
+    public SalvarPedidoUseCasePort salvarPedidoUseCasePort(SalvarPedidoAdapterPort salvarPedidoAdapterPort) {
+        return new SalvarPedidoUseCase(salvarPedidoAdapterPort);
     }
 
     @Bean
@@ -78,8 +80,8 @@ public class BeanConfig {
     }
 
     @Bean
-    public AlterarPedidoUseCasePort alterarPedidoUseCasePort(SalvarPedidoAdapterPort salvarPedidoAdapterPort, BuscarPedidoUseCasePort buscarPedidoUseCasePort){
-        return new AlterarPedidoUseCase(salvarPedidoAdapterPort, buscarPedidoUseCasePort);
+    public AlterarPedidoUseCasePort alterarPedidoUseCasePort(AtualizarPedidoAdapterPort atualizarPedidoAdapterPort, BuscarPedidoUseCasePort buscarPedidoUseCasePort){
+        return new AlterarPedidoUseCase(atualizarPedidoAdapterPort, buscarPedidoUseCasePort);
     }
 
     @Bean
@@ -90,5 +92,10 @@ public class BeanConfig {
     @Bean
     public ValidarPagamentoPedidoUseCasePort validarPagamentoPedidoUseCasePort(ListarPedidosUseCasePort listarPedidosUseCasePort, SalvarPagamentoAdapterPort salvarPagamentoAdapterPort, AtualizarPedidoAdapterPort atualizarPedidoAdapterPort, BuscarPagamentoAdapterPort buscarPagamentoAdapterPort) {
         return new ValidarPagamentoPedidoUseCase(listarPedidosUseCasePort, buscarPagamentoAdapterPort, salvarPagamentoAdapterPort, atualizarPedidoAdapterPort);
+    }
+
+    @Bean
+    public CriarPedidoUseCasePort criarPedidoUseCasePort(SalvarPedidoAdapterPort salvarPedidoAdapterPort, GerenciarProdutoAdapterPort gerenciarProdutoAdapterPort, RecuperarClienteAdapterPort recuperarClienteAdapterPort, BuscarPedidoAdapterPort buscarPedidoAdapterPort){
+        return new CriarPedidoUseCase(salvarPedidoAdapterPort, gerenciarProdutoAdapterPort, recuperarClienteAdapterPort, buscarPedidoAdapterPort);
     }
 }

@@ -19,6 +19,7 @@ Solucionar o problema, a lanchonete irá investir em um sistema de autoatendimen
 
 - Listar os pedidos
 
+
 ## Event Storming
 - Link da documentação do event storming do grupo: [[Miro](https://miro.com/app/board/uXjVKYtyiY8=/?share_link_id=475227793071)] 
 
@@ -27,22 +28,25 @@ Solucionar o problema, a lanchonete irá investir em um sistema de autoatendimen
 [Diagrama da arquitetura](docs/Hexagonal_Architecture.jpg)
 
 ## Setup aplicação
+
+- Atualize a configuracao do kubeconfig
+
+  - Execucao na aws
+    > aws eks update-kubeconfig --region {REGIAO} --name {NOME_CLUSTER}
+  - Execucao local
+    > kubectl config use-context docker-desktop
+
 - Clone o repositório:
 
   	> git clone https://github.com/igusvs/shogun-lanches-challenge.git
 
-  	> cd shogun-lanches-challenge
+  	> cd shogun-lanches-challenge/infra
 
-- Inicie o docker-compose:
+- Execute o script para iniciar os recursos k8s
 
-    *	Windows:
-
-         > docker-compose up --build
-
-    *	Linux e macOS:
-
-         > docker compose up --build
-
+  >  chmod +x ./start.sh
+  
+  > ./start.sh
 
 ## Swagger 
  Link de acesso a documentacao do swagger

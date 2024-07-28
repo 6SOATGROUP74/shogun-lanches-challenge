@@ -4,5 +4,5 @@ metadata:
   name: app-opaque
 type: Opaque
 stringData:
-  DB_USER: admin
-  DB_PASSWORD: usuarioshogun
+  DB_USER: tech_user
+  DB_PASSWORD: tech_password

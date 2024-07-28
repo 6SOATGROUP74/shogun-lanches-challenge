@@ -22,8 +22,8 @@ public class ClienteController {
 
     @PostMapping
     public ResponseEntity<?> incluir(@RequestBody @Valid ClienteRequest request){
-        incluirClienteUseCasePort.execute(ClienteMapper.INSTANCE.mapFrom(request));
-        return ResponseEntity.status(HttpStatus.CREATED).build();
+        return ResponseEntity.status(HttpStatus.CREATED)
+                .body(ClienteResponseMapper.INSTANCE.mapFrom(incluirClienteUseCasePort.execute(ClienteMapper.INSTANCE.mapFrom(request))));
     }
 
     @GetMapping("/{cpf}")

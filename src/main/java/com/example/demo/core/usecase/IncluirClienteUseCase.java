@@ -20,7 +20,7 @@ public class IncluirClienteUseCase implements IncluirClienteUseCasePort {
     }
 
     @Override
-    public void execute(Cliente cliente) {
+    public Cliente execute(Cliente cliente) {
 
         final var result = recuperarClienteAdapterPort.execute(cliente.getCpf());
 
@@ -28,6 +28,6 @@ public class IncluirClienteUseCase implements IncluirClienteUseCasePort {
             throw new ClienteDuplicadoException("Cliente já existe na base de dados.");
         }
 
-        incluirClienteAdapterPort.execute(cliente);
+        return incluirClienteAdapterPort.execute(cliente);
     }
 }

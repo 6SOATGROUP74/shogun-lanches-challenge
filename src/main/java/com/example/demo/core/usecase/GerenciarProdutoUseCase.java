@@ -1,5 +1,6 @@
 package com.example.demo.core.usecase;
 
+import com.example.demo.adapter.outbound.repository.mapper.ProdutoEntityMapper;
 import com.example.demo.core.domain.CategoriaEnum;
 import com.example.demo.core.domain.Produto;
 import com.example.demo.core.domain.exception.CategoriaInvalidaException;
@@ -19,12 +20,12 @@ public class GerenciarProdutoUseCase implements GerenciarProdutoUseCasePort {
     }
 
     @Override
-    public void salvar(Produto produto) {
+    public Produto salvar(Produto produto) {
         produto.setStatus(true);
         if(!CategoriaEnum.contains(produto.getCategoria().toUpperCase())){
             throw new CategoriaInvalidaException("A categoria invalida");
         }
-        gerenciarProdutoAdapterPort.salvar(produto);
+        return gerenciarProdutoAdapterPort.salvar(produto);
     }
 
     @Override
@@ -48,14 +49,14 @@ public class GerenciarProdutoUseCase implements GerenciarProdutoUseCasePort {
     }
 
     @Override
-    public void alterarProduto(Produto produto, final Long idProduto) {
-        var result = gerenciarProdutoAdapterPort.buscarProdutoPorId(idProduto);
+    public Produto alterarProduto(Produto produto, final Long idProduto) {
+        final var result = gerenciarProdutoAdapterPort.buscarProdutoPorId(idProduto);
 
         if(Objects.isNull(result)){
             throw new ProdutoNotFoundException("Produto nao localizado na base.");
         }
         produto.setStatus(true);
         produto.setIdProduto(result.getIdProduto());
-        gerenciarProdutoAdapterPort.salvar(produto);
+        return gerenciarProdutoAdapterPort.salvar(produto);
     }
 }

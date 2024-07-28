@@ -5,8 +5,8 @@ import com.example.demo.core.domain.Produto;
 import java.util.List;
 
 public interface GerenciarProdutoUseCasePort {
-    void salvar(Produto produto);
+    Produto salvar(Produto produto);
     List<Produto> buscarProdutoPorCategoria(String categoria);
     void deletarProduto(Long idProduto);
-    void alterarProduto(Produto produto, Long idProduto);
+    Produto alterarProduto(Produto produto, Long idProduto);
 }

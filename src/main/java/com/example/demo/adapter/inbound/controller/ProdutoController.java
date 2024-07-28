@@ -33,8 +33,8 @@ public class ProdutoController {
 
     @PostMapping
     public ResponseEntity<?> incluir(@RequestBody @Valid ProdutoRequest request){
-        gerenciarProdutoUseCasePort.salvar(ProdutoMapper.INSTANCE.mapFrom(request));
-        return ResponseEntity.status(HttpStatus.CREATED).build();
+        return ResponseEntity.status(HttpStatus.CREATED).body(ProdutoResponseMapper.INSTANCE.mapFrom(
+                gerenciarProdutoUseCasePort.salvar(ProdutoMapper.INSTANCE.mapFrom(request))));
     }
 
     @GetMapping("/{categoria}")
@@ -48,8 +48,8 @@ public class ProdutoController {
     @PatchMapping("/{idProduto}")
     public ResponseEntity<?> alterar(@RequestBody @Valid ProdutoRequest request,
                                      @PathVariable("idProduto") final Long idProduto){
-        gerenciarProdutoUseCasePort.alterarProduto(ProdutoMapper.INSTANCE.mapFrom(request), idProduto);
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok().body(ProdutoResponseMapper.INSTANCE.mapFrom(gerenciarProdutoUseCasePort.alterarProduto(
+                ProdutoMapper.INSTANCE.mapFrom(request), idProduto)));
     }
 
     @DeleteMapping("/{idProduto}")
