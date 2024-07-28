@@ -6,8 +6,10 @@ kubectl apply -f ./database/mysql-pvc.yaml
 kubectl apply -f ./database/mysql-svc.yaml
 
 sleep 3
-
 kubectl apply -f ./service-account.yaml
+
+sleep 3
+
 kubectl apply -f ./app/app-nlb.yaml
 kubectl apply -f ./app/app-svc.yaml
 kubectl apply -f ./app/app-configmap.yaml
