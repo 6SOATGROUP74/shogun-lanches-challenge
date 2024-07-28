@@ -1,6 +1,0 @@
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: mysql-config
-data:
-  MYSQL_URL: jdbc:mysql://mysql-svc:3306/db_soat?useSSL=false&serverTimezone=UTC
