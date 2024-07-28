@@ -5,7 +5,6 @@ import com.example.demo.core.domain.exception.ClienteDuplicadoException;
 import com.example.demo.core.ports.inbound.cliente.IncluirClienteUseCasePort;
 import com.example.demo.core.ports.outbound.cliente.IncluirClienteAdapterPort;
 import com.example.demo.core.ports.outbound.cliente.RecuperarClienteAdapterPort;
-import lombok.AllArgsConstructor;
 
 import java.util.Objects;
 

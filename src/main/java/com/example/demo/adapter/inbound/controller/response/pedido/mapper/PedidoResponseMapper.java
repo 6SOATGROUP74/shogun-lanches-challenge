@@ -16,6 +16,4 @@ public interface PedidoResponseMapper {
     PedidoResponse mapFrom(Pedido pedido);
 
     List<PedidoResponse> mapFrom(List<Pedido> pedido);
-
-
 }

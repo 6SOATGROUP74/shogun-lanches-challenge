@@ -65,4 +65,17 @@ public class Composicao {
     public void setNumeroPedido(Long numeroPedido) {
         this.numeroPedido = numeroPedido;
     }
+
+    @Override
+    public String toString() {
+        return "Composicao{" +
+                "idComposicao=" + idComposicao +
+                ", idProduto=" + idProduto +
+                ", nomeProduto='" + nomeProduto + '\'' +
+                ", categoria='" + categoria + '\'' +
+                ", quantidade=" + quantidade +
+                ", precoUnitario=" + precoUnitario +
+                ", numeroPedido=" + numeroPedido +
+                '}';
+    }
 }

@@ -11,6 +11,8 @@ import com.example.demo.core.ports.outbound.pedido.BuscarPedidoAdapterPort;
 
 import java.util.Objects;
 
+import static com.example.demo.core.domain.StatusPagamento.APROVADO;
+
 public class AlterarStatusPagamentoUseCase implements AlterarStatusPagamentoUseCasePort {
 
     private final ProcessaStatusPagamentoPagbankAdapter processaStatusPagamentoPagbankAdapter;
@@ -37,7 +39,7 @@ public class AlterarStatusPagamentoUseCase implements AlterarStatusPagamentoUseC
         pagamentoAtual.setPedido(pedidoAtual);
 
         final Pagamento pagamentoProcessado = processaStatusPagamentoPagbankAdapter.execute(pagamentoAtual);
-        pagamentoProcessado.setStatus("APROVADO");
+        pagamentoProcessado.setStatus(APROVADO.name());
 
         salvarPagamentoAdapterPort.salvar(pagamentoProcessado);
 

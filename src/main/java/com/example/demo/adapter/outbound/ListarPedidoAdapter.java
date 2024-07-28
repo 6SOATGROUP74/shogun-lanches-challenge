@@ -7,7 +7,6 @@ import com.example.demo.core.ports.outbound.pedido.ListarPedidosAdapterPort;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.time.LocalDate;
 import java.util.List;
 
 @Component
@@ -23,5 +22,15 @@ public class ListarPedidoAdapter implements ListarPedidosAdapterPort {
     @Override
     public List<Pedido> listarTodosPedidos() {
         return PedidoEntityMapper.INSTANCE.mapFrom(repository.findAll());
+    }
+
+    @Override
+    public List<Pedido> listarPedidosOrdenados() {
+        return PedidoEntityMapper.INSTANCE.mapFrom(repository.ordenaPedidos());
+    }
+
+    @Override
+    public Pedido buscarPedidoPorCodReferencia(String codReferencia) {
+        return PedidoEntityMapper.INSTANCE.mapFrom(repository.findByCodReferenciaPedido(codReferencia));
     }
 }

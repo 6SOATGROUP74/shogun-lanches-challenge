@@ -9,10 +9,19 @@ public class Pagamento {
     private String status;
     private BigDecimal valorTotal;
     private String tipoDoPagamento;
+    private String dataPagamento;
     private Pedido pedido;
     private String codPagamento;
     private String copiaCola;
     private String qrCodeLink;
+
+    public String getDataPagamento() {
+        return dataPagamento;
+    }
+
+    public void setDataPagamento(String dataPagamento) {
+        this.dataPagamento = dataPagamento;
+    }
 
     public String getCopiaCola() {
         return copiaCola;
@@ -84,5 +93,21 @@ public class Pagamento {
 
     public void setPedido(Pedido pedido) {
         this.pedido = pedido;
+    }
+
+    @Override
+    public String toString() {
+        return "Pagamento{" +
+                "idPagamento=" + idPagamento +
+                ", numeroPedido=" + numeroPedido +
+                ", status='" + status + '\'' +
+                ", valorTotal=" + valorTotal +
+                ", tipoDoPagamento='" + tipoDoPagamento + '\'' +
+                ", dataPagamento='" + dataPagamento + '\'' +
+                ", pedido=" + pedido +
+                ", codPagamento='" + codPagamento + '\'' +
+                ", copiaCola='" + copiaCola + '\'' +
+                ", qrCodeLink='" + qrCodeLink + '\'' +
+                '}';
     }
 }

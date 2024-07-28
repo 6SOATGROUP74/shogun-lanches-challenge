@@ -2,12 +2,15 @@ package com.example.demo.adapter.inbound.controller.request.pedido;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.NotNull;
-import lombok.*;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
 import java.util.List;
 
 @Getter
 @Setter
+@ToString
 public class PedidoRequest {
 
     @JsonProperty("id_cliente")

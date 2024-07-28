@@ -7,7 +7,6 @@ import com.example.demo.core.ports.inbound.cliente.IncluirClienteUseCasePort;
 import com.example.demo.core.ports.inbound.cliente.RecuperarClienteUseCasePort;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
-import org.hibernate.validator.constraints.br.CPF;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

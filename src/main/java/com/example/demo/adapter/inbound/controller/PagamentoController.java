@@ -2,15 +2,13 @@ package com.example.demo.adapter.inbound.controller;
 
 import com.example.demo.adapter.inbound.controller.request.pagamento.PagamentoRequest;
 import com.example.demo.adapter.inbound.controller.request.pagamento.mapper.PagamentoMapper;
-import com.example.demo.adapter.outbound.integration.pagbank.PagbankClient;
-import com.example.demo.adapter.outbound.integration.pagbank.request.PagbankPagamentoRequest;
-
+import com.example.demo.adapter.outbound.integration.pagbank.request.PagbankWebhookRequest;
 import com.example.demo.core.domain.Pagamento;
-import com.example.demo.core.ports.inbound.pagamento.AlterarStatusPagamentoUseCasePort;
 import com.example.demo.core.ports.inbound.pagamento.PagarPedidoUseCasePort;
-import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
+import com.example.demo.core.ports.inbound.pagamento.ValidarPagamentoPedidoUseCasePort;
+import com.example.demo.core.ports.outbound.pagamento.BuscarPagamentoAdapterPort;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,51 +19,55 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/v1/pagamento")
-@AllArgsConstructor
 public class PagamentoController {
 
-    //TODO Ajustar código após testes
+    private static final Logger logger = LoggerFactory.getLogger(PagamentoController.class);
 
-    @Autowired
-    PagbankClient pagbankClient;
+    private final PagarPedidoUseCasePort pagarPedidoUseCasePort;
+    private final ValidarPagamentoPedidoUseCasePort validarPagamentoPedidoUseCasePort;
+    private final BuscarPagamentoAdapterPort buscarPagamentoAdapterPort;
 
-    @Autowired
-    private PagarPedidoUseCasePort pagarPedidoUseCasePort;
-
-    @Autowired
-    private AlterarStatusPagamentoUseCasePort alterarStatusPagamentoUseCasePort;
-
-
-    @Value("${pagbank.token}")
-    String token;
-
-    public PagamentoController() {
+    public PagamentoController(PagarPedidoUseCasePort pagarPedidoUseCasePort, ValidarPagamentoPedidoUseCasePort validarPagamentoPedidoUseCasePort, BuscarPagamentoAdapterPort buscarPagamentoAdapterPort){
+        this.pagarPedidoUseCasePort = pagarPedidoUseCasePort;
+        this.validarPagamentoPedidoUseCasePort = validarPagamentoPedidoUseCasePort;
+        this.buscarPagamentoAdapterPort = buscarPagamentoAdapterPort;
     }
-
-    public PagamentoController(String token) {
-        this.token = token;
-    }
-
+    
     @PostMapping
     public ResponseEntity<?> realizarPagamento(@RequestBody PagamentoRequest pagamentoRequest) {
 
+        logger.info("m=realizarPagamento, status=init,  msg=Realiza processo de pagamento, pagamentoRequest={}", pagamentoRequest);
+
         Pagamento pagamento = pagarPedidoUseCasePort.checkout(PagamentoMapper.INSTANCE.mapFrom(pagamentoRequest));
 
-        return ResponseEntity.status(HttpStatus.CREATED).body(pagamento);
+        logger.info("m=realizarPagamento, status=success,  msg=Processo de pagamento realizado com sucesso, pagamentoRequest={}", pagamentoRequest);
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(PagamentoMapper.INSTANCE.mapFrom(pagamento));
     }
 
     @GetMapping
-    public ResponseEntity<Pagamento> consultaStatusPagamento(Long pagamentoId) {
+    public ResponseEntity<?> consultaStatusPagamento(Long pagamentoId) {
 
-        Pagamento pagamentoStatus = alterarStatusPagamentoUseCasePort.execute(pagamentoId);
+        logger.info("m=consultaStatusPagamento, status=init,  msg=Consulta status de pagamento, pagamentoId={}", pagamentoId);
 
-        return ResponseEntity.ok(pagamentoStatus);
+        Pagamento pagamentoStatus = buscarPagamentoAdapterPort.buscar(pagamentoId);
+
+        logger.info("m=consultaStatusPagamento, status=sucess,  msg=Consulta status de pagamento realizada com sucesso, pagamentoId={}", pagamentoId);
+
+        return ResponseEntity.ok(pagamentoStatus.getStatus());
     }
 
-    //TODO ajustar o webhook
     @PostMapping("/webhook")
-    public ResponseEntity<?> consultaStatusPagamentoWebhook(@RequestBody PagbankPagamentoRequest pagbankPagamentoRequest) {
+    public ResponseEntity<?> recebeConfirmacaoDePagamentoWebhook(@RequestBody PagbankWebhookRequest pagbankPagamentoRequest) {
 
-        return ResponseEntity.status(HttpStatus.CREATED).body(pagbankPagamentoRequest);
+        logger.info("m=recebeConfirmacaoDePagamentoWebhook, msg=Recebendo confirmação de status de pagamento do Pagbank, pagbankPagamentoRequest={}", pagbankPagamentoRequest);
+
+        var pagamento = PagamentoMapper.INSTANCE.mapFrom(pagbankPagamentoRequest);
+
+        validarPagamentoPedidoUseCasePort.execute(pagamento);
+
+        logger.info("m=recebeConfirmacaoDePagamentoWebhook, msg=Confirmação de pagamento recebido do Pagbank com sucesso, pagbankPagamentoRequest={}", pagbankPagamentoRequest);
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(PagamentoMapper.INSTANCE.mapConvertFrom(pagamento));
     }
 }

@@ -12,6 +12,4 @@ public interface ClienteResponseMapper {
 
     ClienteResponse mapFrom(Cliente cliente);
 
-
-
 }

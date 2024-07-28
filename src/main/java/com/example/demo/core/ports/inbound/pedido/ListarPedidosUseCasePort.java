@@ -5,4 +5,6 @@ import java.util.List;
 
 public interface ListarPedidosUseCasePort {
    List<Pedido> execute();
+   List<Pedido> listarOrdenados();
+   Pedido listarPorCodReferencia(String referencia);
 }
