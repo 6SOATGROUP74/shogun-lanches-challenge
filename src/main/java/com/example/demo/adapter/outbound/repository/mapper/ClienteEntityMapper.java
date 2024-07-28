@@ -17,6 +17,7 @@ public interface ClienteEntityMapper {
     @Mapping(target = "dataCadastro", expression = "java(dataHoraAtual())")
     ClienteEntity mapFrom(Cliente cliente);
 
+    @Mapping(target = "dataCadastro", source = "dataCadastro")
     Cliente mapFrom(ClienteEntity cliente);
 
     default String dataHoraAtual() {

@@ -8,10 +8,9 @@ import com.example.demo.core.domain.Composicao;
 import com.example.demo.core.domain.Pedido;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
-import org.mapstruct.Named;
 import org.mapstruct.factory.Mappers;
 
-import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -27,6 +26,7 @@ public interface PedidoMapper {
     @Mapping(source = "numeroPedido", target = "numeroPedido")
     Pedido mapFrom(AtualizaPedidoRequest atualizaPedidoRequest);
 
+    @Mapping(target = "numeroPedido", source = "numeroPedido")
     List<PedidoEntity> mapFrom(List<Pedido> pedidos);
 
     @Mapping(target = "numeroPedido", source = "numeroPedido")
@@ -41,5 +41,6 @@ public interface PedidoMapper {
     @Mapping(target = "codPedido", source = "codPedido")
     @Mapping(target = "codReferenciaPedido", source = "codReferenciaPedido")
     @Mapping(target = "composicao", source = "composicao")
+    @Mapping(target = "dataMudancaEtapa", source = "dataMudancaEtapa")
     Pedido mapFrom(PedidoEntity pedidoEntity);
 }

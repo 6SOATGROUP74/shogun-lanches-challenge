@@ -6,6 +6,15 @@ public class Cliente {
     private String nome;
     private String cpf;
     private String email;
+    private String dataCadastro;
+
+    public String getDataCadastro() {
+        return dataCadastro;
+    }
+
+    public void setDataCadastro(String dataCadastro) {
+        this.dataCadastro = dataCadastro;
+    }
 
     public Cliente(String nome, Long idCliente, String cpf, String email) {
         this.nome = nome;
@@ -56,6 +65,7 @@ public class Cliente {
                 ", nome='" + nome + '\'' +
                 ", cpf='" + cpf + '\'' +
                 ", email='" + email + '\'' +
+                ", dataCadastro='" + dataCadastro + '\'' +
                 '}';
     }
 }
