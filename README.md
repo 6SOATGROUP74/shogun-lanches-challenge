@@ -20,14 +20,25 @@ Solucionar o problema, a lanchonete irá investir em um sistema de autoatendimen
 - Listar os pedidos
 
 
-## Event Storming
-- Link da documentação do event storming do grupo: [[Miro](https://miro.com/app/board/uXjVKYtyiY8=/?share_link_id=475227793071)] 
+## Arquitetura Kubernetes (K8S) 
+<details>
+  <summary>Arquitetura Kubernetes</summary>
+ <img src="https://github.com/igusvs/shogun-lanches-challenge/blob/main/docs/arquitetura_k8s-Infra%20K8s.jpg" style="max-width: 100%;">
+</details>
+
+## Arquitetura 
+<details>
+  <summary>Arquitetura</summary>
+ <img src="https://github.com/igusvs/shogun-lanches-challenge/blob/main/docs/arquitetura_k8s-Negocio.jpg" style="max-width: 100%;">
+</details>
 
 ## Detalhes do projeto
 
 [Diagrama da arquitetura](docs/Hexagonal_Architecture.jpg)
 
-## Setup aplicação
+## Como executar o projeto
+<details>
+  <summary>Setup aplicação</summary>
 
 - Atualize a configuracao do kubeconfig
 
@@ -47,10 +58,17 @@ Solucionar o problema, a lanchonete irá investir em um sistema de autoatendimen
   >  chmod +x ./start.sh
   
   > ./start.sh
+</details>
+
+## Link collection Postman
+[Collection Postman](https://github.com/igusvs/shogun-lanches-challenge/blob/main/docs/OpenAPI%20definition.postman_collection.json)
 
 ## Swagger 
  Link de acesso a documentacao do swagger
 > http://localhost:30000/swagger-ui/index.html
+
+## Event Storming
+- Link da documentação do event storming do grupo: [[Miro](https://miro.com/app/board/uXjVKYtyiY8=/?share_link_id=475227793071)] 
 
 ## Integrantes - Grupo 44
 
