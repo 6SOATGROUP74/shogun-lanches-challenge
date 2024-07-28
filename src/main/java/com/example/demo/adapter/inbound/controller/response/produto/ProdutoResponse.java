@@ -1,5 +1,7 @@
 package com.example.demo.adapter.inbound.controller.response.produto;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 public class ProdutoResponse {
 
     private Long idProduto;

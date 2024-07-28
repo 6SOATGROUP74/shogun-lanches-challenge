@@ -12,6 +12,8 @@ import com.example.demo.core.ports.outbound.produto.GerenciarProdutoAdapterPort;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -60,6 +62,7 @@ public class CriarPedidoUseCase implements CriarPedidoUseCasePort {
         pedido.setCodReferenciaPedido(UUID.randomUUID().toString());
         pedido.setValorTotal(valorTotal);
         pedido.setEtapa(RECEBIDO.name());
+        pedido.setDataMudancaEtapa(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
 
         Cliente cliente = recuperarClienteAdapterPort.recuperarPorId(pedido.getCliente().getIdCliente());
         pedido.setCliente(cliente);

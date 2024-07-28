@@ -29,6 +29,7 @@ public interface PedidoEntityMapper {
     @Mapping(target =  "dataPedido", source = "pedidoEntity.dataPedido")
     @Mapping(target =  "codPedido", source = "pedidoEntity.codPedido")
     @Mapping(target =  "codReferenciaPedido", source = "pedidoEntity.codReferenciaPedido")
+    @Mapping(target =  "dataMudancaEtapa", source = "pedidoEntity.dataMudancaEtapa")
     Pedido mapFrom(PedidoEntity pedidoEntity);
     List<Pedido> mapFrom(List<PedidoEntity> pedidoEntity);
 

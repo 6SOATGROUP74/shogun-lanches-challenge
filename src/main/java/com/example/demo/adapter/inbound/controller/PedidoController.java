@@ -3,6 +3,7 @@ package com.example.demo.adapter.inbound.controller;
 import com.example.demo.adapter.inbound.controller.request.pedido.AtualizaPedidoRequest;
 import com.example.demo.adapter.inbound.controller.request.pedido.PedidoRequest;
 import com.example.demo.adapter.inbound.controller.request.pedido.mapper.PedidoMapper;
+import com.example.demo.adapter.inbound.controller.response.pedido.mapper.PedidoResponseMapper;
 import com.example.demo.core.domain.Pedido;
 import com.example.demo.core.ports.inbound.pedido.AlterarPedidoUseCasePort;
 import com.example.demo.core.ports.inbound.pedido.CriarPedidoUseCasePort;
@@ -48,7 +49,7 @@ public class PedidoController {
         Pedido pedidoCriado = criarPedidoUseCasePort.criarPedido(PedidoMapper.INSTANCE.mapFrom(pedidoRequest));
 
         logger.info("m=salvarPedido, status=success,  msg=Pedido criado com sucesso, pedidoRequest={}", pedidoRequest);
-        return ResponseEntity.status(HttpStatus.CREATED).body(pedidoCriado);
+        return ResponseEntity.status(HttpStatus.CREATED).body(PedidoResponseMapper.INSTANCE.mapFrom(pedidoCriado));
     }
 
     @PatchMapping("/atualiza")
@@ -59,6 +60,6 @@ public class PedidoController {
         Pedido pedido = alterarPedidoUseCasePort.execute(pedidoAlterado);
 
         logger.info("m=atualizaPedido, status=success,  msg=Pedido atualizado com sucesso, atualizaPedidoRequest={}", atualizaPedidoRequest);
-        return ResponseEntity.status(HttpStatus.CREATED).body(pedido);
+        return ResponseEntity.status(HttpStatus.CREATED).body(PedidoResponseMapper.INSTANCE.mapFrom(pedido));
     }
 }

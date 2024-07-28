@@ -13,6 +13,15 @@ public class Pedido {
     private String dataPedido;
     private String codPedido;
     private String codReferenciaPedido;
+    private String dataMudancaEtapa;
+
+    public String getDataMudancaEtapa() {
+        return dataMudancaEtapa;
+    }
+
+    public void setDataMudancaEtapa(String dataMudancaEtapa) {
+        this.dataMudancaEtapa = dataMudancaEtapa;
+    }
 
     public String getCodReferenciaPedido() {
         return codReferenciaPedido;
@@ -98,6 +107,7 @@ public class Pedido {
                 ", dataPedido='" + dataPedido + '\'' +
                 ", codPedido='" + codPedido + '\'' +
                 ", codReferenciaPedido='" + codReferenciaPedido + '\'' +
+                ", dataMudancaEtapa='" + dataMudancaEtapa + '\'' +
                 '}';
     }
 }
