@@ -26,5 +26,5 @@ public class AtualizarPedidoAdapter implements AtualizarPedidoAdapterPort {
         return pedidoPersistido;
     }
 
-    private Logger logger = LoggerFactory.getLogger(AtualizarPedidoAdapter.class);
+    private final Logger logger = LoggerFactory.getLogger(AtualizarPedidoAdapter.class);
 }
