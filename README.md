@@ -5,21 +5,6 @@ Trabalho desenvolvido como forma de avaliação no curso de pós-graduação em 
 ## Objetivo
 Solucionar o problema, a lanchonete irá investir em um sistema de autoatendimento de fast food, que é composto por uma série de dispositivos e interfaces que permitem aos clientes selecionar e fazer pedidos sem precisar interagir com um atendente, com as seguintes funcionalidades
 
-## Funcionalidades
-
-- Cadastro do Cliente
-
-- Identificação do cliente via CPF
-
-- Criar, editar e remover produtos
-
-- Buscar produtos por categoria
-
-- Fake checkout, apenas enviar os produtos escolhidos para a fila. O checkout é a finalização do pedido.
-
-- Listar os pedidos
-
-
 ## Arquitetura Kubernetes (K8S) 
 <details>
   <summary>Arquitetura Kubernetes</summary>
