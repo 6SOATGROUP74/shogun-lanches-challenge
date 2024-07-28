@@ -1,5 +1,6 @@
 package com.example.demo.adapter.outbound;
 
+import com.example.demo.adapter.inbound.controller.request.pedido.mapper.PedidoMapper;
 import com.example.demo.adapter.outbound.repository.PedidoRepository;
 import com.example.demo.adapter.outbound.repository.mapper.PedidoEntityMapper;
 import com.example.demo.core.domain.Pedido;
@@ -18,7 +19,7 @@ public class SalvarPedidoAdapter implements SalvarPedidoAdapterPort {
     }
 
     @Override
-    public void execute(Pedido pedido) {
-       repository.save(PedidoEntityMapper.INSTANCE.mapFrom(pedido));
+    public Pedido execute(Pedido pedido) {
+       return PedidoMapper.INSTANCE.mapFrom(repository.save(PedidoEntityMapper.INSTANCE.mapFrom(pedido)));
     }
 }

@@ -1,8 +1,10 @@
 package com.example.demo.adapter.inbound.controller.request.pedido.mapper;
 
 import com.example.demo.adapter.inbound.controller.request.pedido.ComposicaoRequest;
+import com.example.demo.adapter.outbound.repository.entity.ComposicaoEntity;
 import com.example.demo.core.domain.Composicao;
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
 
 import java.util.List;
@@ -15,5 +17,4 @@ public interface ComposicaoMapper {
 
     Composicao mapFrom(ComposicaoRequest composicaoRequest);
     List<Composicao> mapFrom(List<ComposicaoRequest> composicaoRequest);
-
 }

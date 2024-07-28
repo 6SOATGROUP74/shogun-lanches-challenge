@@ -8,7 +8,6 @@ public class Composicao {
     private String categoria;
     private int quantidade;
     private double precoUnitario;
-    private Long numeroPedido;
 
     public Long getIdProduto() {
         return idProduto;
@@ -58,14 +57,6 @@ public class Composicao {
         this.precoUnitario = precoUnitario;
     }
 
-    public Long getNumeroPedido() {
-        return numeroPedido;
-    }
-
-    public void setNumeroPedido(Long numeroPedido) {
-        this.numeroPedido = numeroPedido;
-    }
-
     @Override
     public String toString() {
         return "Composicao{" +
@@ -75,7 +66,6 @@ public class Composicao {
                 ", categoria='" + categoria + '\'' +
                 ", quantidade=" + quantidade +
                 ", precoUnitario=" + precoUnitario +
-                ", numeroPedido=" + numeroPedido +
                 '}';
     }
 }

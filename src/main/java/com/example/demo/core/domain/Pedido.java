@@ -8,7 +8,6 @@ public class Pedido {
     private Cliente cliente;
     private Double valorTotal;
     private List<Composicao> composicao;
-    private String status;
     private String etapa;
     private Long idPagamento;
     private String dataPedido;
@@ -29,14 +28,6 @@ public class Pedido {
 
     public void setCodPedido(String codPedido) {
         this.codPedido = codPedido;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
     }
 
     public Long getNumeroPedido() {
@@ -102,7 +93,6 @@ public class Pedido {
                 ", cliente=" + cliente +
                 ", valorTotal=" + valorTotal +
                 ", composicao=" + composicao +
-                ", status='" + status + '\'' +
                 ", etapa='" + etapa + '\'' +
                 ", idPagamento=" + idPagamento +
                 ", dataPedido='" + dataPedido + '\'' +

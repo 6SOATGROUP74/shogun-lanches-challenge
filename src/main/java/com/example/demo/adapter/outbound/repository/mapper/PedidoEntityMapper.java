@@ -21,7 +21,14 @@ public interface PedidoEntityMapper {
     @Mapping(target = "dataPedido", expression = "java(dataHoraAtual())")
     PedidoEntity mapFrom(Pedido pedido);
 
-    @Mapping(target =  "idPagamento", source = "pagamentoEntity.idPagamento")
+    @Mapping(target =  "numeroPedido", source = "pedidoEntity.numeroPedido")
+    @Mapping(target =  "cliente", source = "pedidoEntity.cliente")
+    @Mapping(target =  "valorTotal", source = "pedidoEntity.valorTotal")
+    @Mapping(target =  "composicao", source = "pedidoEntity.composicao")
+    @Mapping(target =  "idPagamento", source = "pedidoEntity.pagamentoEntity.idPagamento")
+    @Mapping(target =  "dataPedido", source = "pedidoEntity.dataPedido")
+    @Mapping(target =  "codPedido", source = "pedidoEntity.codPedido")
+    @Mapping(target =  "codReferenciaPedido", source = "pedidoEntity.codReferenciaPedido")
     Pedido mapFrom(PedidoEntity pedidoEntity);
     List<Pedido> mapFrom(List<PedidoEntity> pedidoEntity);
 
