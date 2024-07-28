@@ -57,4 +57,16 @@ public class Produto {
     public void setStatus(boolean status) {
         this.status = status;
     }
+
+    @Override
+    public String toString() {
+        return "Produto{" +
+                "nome='" + nome + '\'' +
+                ", quantidade=" + quantidade +
+                ", categoria='" + categoria + '\'' +
+                ", valor=" + valor +
+                ", idProduto=" + idProduto +
+                ", status=" + status +
+                '}';
+    }
 }

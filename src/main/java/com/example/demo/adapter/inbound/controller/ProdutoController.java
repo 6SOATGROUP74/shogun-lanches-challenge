@@ -58,13 +58,4 @@ public class ProdutoController {
         return ResponseEntity.ok().build();
     }
 
-
-    @PostMapping("/teste")
-    public ResponseEntity<?> testeWeb(String request){
-
-        logger.info(request);
-
-        return ResponseEntity.ok().build();
-    }
-
 }

@@ -4,6 +4,7 @@ import com.example.demo.core.domain.Pagamento;
 import com.example.demo.core.domain.Pedido;
 import com.example.demo.core.domain.exception.PagamentoNotFoundException;
 import com.example.demo.core.domain.exception.PedidoNotFoundException;
+import com.example.demo.core.domain.StatusPagamento;
 import com.example.demo.core.ports.inbound.pagamento.ValidarPagamentoPedidoUseCasePort;
 import com.example.demo.core.ports.inbound.pedido.ListarPedidosUseCasePort;
 import com.example.demo.core.ports.outbound.pagamento.BuscarPagamentoAdapterPort;
@@ -11,6 +12,8 @@ import com.example.demo.core.ports.outbound.pagamento.SalvarPagamentoAdapterPort
 import com.example.demo.core.ports.outbound.pedido.AtualizarPedidoAdapterPort;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
 public class ValidarPagamentoPedidoUseCase implements ValidarPagamentoPedidoUseCasePort {
@@ -48,7 +51,8 @@ public class ValidarPagamentoPedidoUseCase implements ValidarPagamentoPedidoUseC
         pagamentoAtualizado.setNumeroPedido(pedido.getNumeroPedido());
         pagamentoAtualizado.setPedido(pedido);
         pagamentoAtualizado.setCodPagamento(pagamento.getCodPagamento());
-        pagamentoAtualizado.setStatus("APROVADO");
+        pagamentoAtualizado.setStatus(StatusPagamento.APROVADO.name());
+        pagamentoAtualizado.setDataPagamento(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
 
         final var dadosPagamento = salvarPagamentoAdapterPort.salvar(pagamentoAtualizado);
 

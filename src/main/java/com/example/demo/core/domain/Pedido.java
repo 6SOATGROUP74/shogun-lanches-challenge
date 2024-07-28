@@ -94,4 +94,20 @@ public class Pedido {
     public void setDataPedido(String dataPedido) {
         this.dataPedido = dataPedido;
     }
+
+    @Override
+    public String toString() {
+        return "Pedido{" +
+                "numeroPedido=" + numeroPedido +
+                ", cliente=" + cliente +
+                ", valorTotal=" + valorTotal +
+                ", composicao=" + composicao +
+                ", status='" + status + '\'' +
+                ", etapa='" + etapa + '\'' +
+                ", idPagamento=" + idPagamento +
+                ", dataPedido='" + dataPedido + '\'' +
+                ", codPedido='" + codPedido + '\'' +
+                ", codReferenciaPedido='" + codReferenciaPedido + '\'' +
+                '}';
+    }
 }

@@ -8,6 +8,8 @@ import com.example.demo.core.ports.outbound.pedido.PedidoEmPreparacaoAdapterPort
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import static com.example.demo.core.domain.StatusPedido.EM_PREPARACAO;
+
 @AllArgsConstructor
 @Component
 public class PedidoEmPreparacaoAdapter implements PedidoEmPreparacaoAdapterPort {
@@ -17,7 +19,7 @@ public class PedidoEmPreparacaoAdapter implements PedidoEmPreparacaoAdapterPort 
     @Override
     public Pedido execute(Long idPedido) {
         PedidoEntity pedidoEntity = pedidoRepository.findById(idPedido).orElseThrow();
-        pedidoEntity.setEtapa("EM_PREPARACAO");
+        pedidoEntity.setEtapa(EM_PREPARACAO.name());
         PedidoEntity pedidoAlterado = pedidoRepository.save(pedidoEntity);
         return PedidoEntityMapper.INSTANCE.mapFrom(pedidoAlterado);
     }

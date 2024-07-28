@@ -10,6 +10,8 @@ import com.example.demo.core.ports.outbound.produto.GerenciarProdutoAdapterPort;
 import java.util.Objects;
 import java.util.UUID;
 
+import static com.example.demo.core.domain.StatusPedido.RECEBIDO;
+
 public class SalvarPedidoUseCase implements SalvarPedidoUseCasePort {
 
     private final SalvarPedidoAdapterPort salvarPedidoAdapterPort;
@@ -43,7 +45,7 @@ public class SalvarPedidoUseCase implements SalvarPedidoUseCasePort {
 
         pedido.setCodReferenciaPedido(UUID.randomUUID().toString());
         pedido.setValorTotal(valorTotal);
-        pedido.setEtapa("RECEBIDO");
+        pedido.setEtapa(RECEBIDO.name());
 
         salvarPedidoAdapterPort.execute(pedido);
     }
