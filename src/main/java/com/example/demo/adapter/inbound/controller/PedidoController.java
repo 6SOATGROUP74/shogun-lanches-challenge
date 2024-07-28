@@ -32,15 +32,19 @@ public class PedidoController {
 
     @GetMapping
     public ResponseEntity<?> listarPedidos() {
+        logger.info("m=listarPedidos, msg=Lista pedidos");
         return ResponseEntity.ok()
                 .body(PedidoMapper.INSTANCE.mapFrom(listarPedidosUseCasePort.listarOrdenados()));
     }
 
     @PostMapping
-    public ResponseEntity<?> salvarPedido(@RequestBody @Valid PedidoRequest request) {
+    public ResponseEntity<?> salvarPedido(@RequestBody @Valid PedidoRequest pedidoRequest) {
 
-        logger.info("teste");
-        salvarPedidoUseCasePort.execute(PedidoMapper.INSTANCE.mapFrom(request));
+        logger.info("m=salvarPedido, status=init,  msg=Cria pedido, pedidoRequest={}", pedidoRequest);
+
+        salvarPedidoUseCasePort.execute(PedidoMapper.INSTANCE.mapFrom(pedidoRequest));
+
+        logger.info("m=salvarPedido, status=success,  msg=Pedido criado com sucesso, pedidoRequest={}", pedidoRequest);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
