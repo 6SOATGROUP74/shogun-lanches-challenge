@@ -53,7 +53,3 @@ Solucionar o problema, a lanchonete irá investir em um sistema de autoatendimen
 - Igor Alves da Silva - RM 354365
 
 - Rodrigo Seiji Campos Imai - RM 353766
-
-## Contribuidores
-
-<a href="https://github.com/igusvs/shogun-lanches-challenge/graphs/contributors"><img src="https://contrib.rocks/image?repo=igusvs/shogun-lanches-challenge"/></a>

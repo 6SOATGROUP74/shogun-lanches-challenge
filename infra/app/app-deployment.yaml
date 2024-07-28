@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: app-container
-          image: igoryy/fiap-6soat:2
+          image: igoryy/fiap-6soat:prod
           imagePullPolicy: Always
           ports:
             - containerPort: 80

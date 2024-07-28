@@ -1,0 +1,53 @@
+name: Java CI with Maven
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Cache Maven packages
+        uses: actions/cache@v3
+        with:
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            ${{ runner.os }}-maven-
+
+      - name: Install dependencies
+        run: mvn install -DskipTests
+
+      - name: Build with Maven
+        run: mvn package
+
+      - name: Run tests
+        run: mvn test
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v5
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: Add changes from CI build
+          branch: ci-build/${{ github.sha }}
+          title: 'CI Build - Add changes'
+          body: |
+            This PR was created automatically by the CI pipeline.
+            - Branch: ${{ github.ref }}
+            - Commit: ${{ github.sha }}
+          base: main
