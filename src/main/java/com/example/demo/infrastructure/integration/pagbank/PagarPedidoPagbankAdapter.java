@@ -52,7 +52,7 @@ public class PagarPedidoPagbankAdapter implements PagarPedidoAdapterPort {
                 Arrays.asList(new Produto("Ordem de pedido Shogun Lanches", 1L, pagamento.getValorTotal().longValue())),
                 Arrays.asList(new QRCodeRequest(new Total(pagamento.getValorTotal().longValue()))),
                 // TODO COLOCAR A URL DA AWS
-                Arrays.asList("https://webhook.site/9ee42903-160b-4707-8c01-a5ebab9a92ef")
+                Arrays.asList("https://webhook.site/39d74e00-3edd-421e-8e33-59ff54437db9")
         );
         logger.info("m=criaRequestParaPagamento, status=success, msg=Request para o PagBank criado com sucesso, pagamento={}", pagamento);
         return pagbankPagamentoRequest;
