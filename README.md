@@ -55,7 +55,7 @@ Solucionar o problema, a lanchonete irá investir em um sistema de autoatendimen
 ## Event Storming
 - Link da documentação do event storming do grupo: [[Miro](https://miro.com/app/board/uXjVKYtyiY8=/?share_link_id=475227793071)] 
 
-## Integrantes - Grupo 44
+## Integrantes - Grupo 74
 
 - Igor Alves da Silva - RM 354365
 
