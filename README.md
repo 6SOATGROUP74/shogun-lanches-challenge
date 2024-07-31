@@ -46,7 +46,9 @@ Solucionar o problema, a lanchonete irá investir em um sistema de autoatendimen
 </details>
 
 ## Link collection Postman
-[Collection Postman](https://github.com/igusvs/shogun-lanches-challenge/blob/main/docs/OpenAPI%20definition.postman_collection.json)
+[Collection Postman](https://github.com/igusvs/shogun-lanches-challenge/blob/main/docs/OpenAPI%20definition%20-%20Shogun%20AWS.postman_collection.json)
+
+
 
 ## Swagger 
  Link de acesso a documentacao do swagger
