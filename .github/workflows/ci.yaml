@@ -3,9 +3,8 @@ name: Build and Test (Javao)
 on:
   push:
     branches: [ feature/** ]
-  pull_request:
-    branches: [ release ]
-
+#  pull_request:
+#    branches: [ release ]
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -42,10 +41,10 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           commit-message: Add changes from CI build
-          branch: ci-build/${{ github.sha }}
+          branch: release
+          base: main
           title: 'CI Build - Add changes'
           body: |
             This PR was created automatically by the CI pipeline.
             - Branch: ${{ github.ref }}
             - Commit: ${{ github.sha }}
-          base: main
