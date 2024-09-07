@@ -1,12 +1,10 @@
-name: Java CI with Maven
+name: Build and Test (Javao)
 
 on:
   push:
-    branches:
-      - main
+    branches: [ feature/** ]
   pull_request:
-    branches:
-      - main
+    branches: [ release ]
 
 jobs:
   build:
