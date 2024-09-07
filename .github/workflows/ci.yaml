@@ -1,13 +1,10 @@
-name: Java CI with Maven
+name: Build and Test (Javao)
 
 on:
   push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
-
+    branches: [ feature/** ]
+#  pull_request:
+#    branches: [ release ]
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -44,10 +41,21 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           commit-message: Add changes from CI build
-          branch: ci-build/${{ github.sha }}
+          branch: release
+          base: main
           title: 'CI Build - Add changes'
           body: |
             This PR was created automatically by the CI pipeline.
             - Branch: ${{ github.ref }}
             - Commit: ${{ github.sha }}
-          base: main
+
+  sonarcloud:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: SonarCloud Scan
+        uses: sonarsource/sonarcloud-github-action@v3.0.0
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
