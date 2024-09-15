@@ -23,8 +23,8 @@ public class IncluirClienteUseCase implements IncluirClienteUseCasePort {
     public Cliente execute(Cliente cliente) {
 
         final var result = recuperarClienteAdapterPort.execute(cliente.getCpf());
-
-        if(Objects.nonNull(result)){
+        final var responseCognito = recuperarClienteAdapterPort.
+        if(Objects.nonNull(result) && ){
             throw new ClienteDuplicadoException("Cliente já existe na base de dados.");
         }
 
