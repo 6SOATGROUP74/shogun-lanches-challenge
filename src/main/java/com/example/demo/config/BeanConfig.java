@@ -1,5 +1,6 @@
 package com.example.demo.config;
 
+import com.example.demo.adapter.gateway.interfaces.cliente.ClienteCognitoAdapterPort;
 import com.example.demo.adapter.gateway.interfaces.cliente.IncluirClienteAdapterPort;
 import com.example.demo.adapter.gateway.interfaces.cliente.RecuperarClienteAdapterPort;
 import com.example.demo.adapter.gateway.interfaces.pagamento.BuscarPagamentoAdapterPort;
@@ -42,8 +43,9 @@ public class BeanConfig {
 
     @Bean
     public IncluirClienteUseCasePort incluirClienteUseCasePort(IncluirClienteAdapterPort incluirClienteAdapterPort,
-                                                               RecuperarClienteAdapterPort recuperarClienteAdapterPort) {
-        return new IncluirClienteUseCase(recuperarClienteAdapterPort, incluirClienteAdapterPort);
+                                                               RecuperarClienteAdapterPort recuperarClienteAdapterPort,
+                                                               ClienteCognitoAdapterPort clienteCognitoAdapterPort) {
+        return new IncluirClienteUseCase(recuperarClienteAdapterPort, incluirClienteAdapterPort, clienteCognitoAdapterPort);
     }
 
     @Bean
