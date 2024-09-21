@@ -50,7 +50,9 @@ public class ProdutoController {
     @PatchMapping("/{idProduto}")
     public ResponseEntity<?> alterar(@RequestBody @Valid ProdutoRequest request,
                                      @PathVariable("idProduto") final Long idProduto){
-        return ResponseEntity.ok().body(ProdutoResponseMapper.INSTANCE.mapFrom(gerenciarProdutoUseCasePort.alterarProduto(
+        return ResponseEntity.ok().body(
+                ProdutoResponseMapper.INSTANCE.mapFrom(
+                        gerenciarProdutoUseCasePort.alterarProduto(
                 ProdutoMapper.INSTANCE.mapFrom(request), idProduto)));
     }
 
