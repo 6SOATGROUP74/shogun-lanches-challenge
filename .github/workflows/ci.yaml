@@ -70,8 +70,8 @@ jobs:
       - name: Valida diretorio
         run: ls -la
 
-      - name: Build with Maven
-        run: mvn clean verify
+      - name: Valida arquivos Jacoco
+        run: cd target/site/jacoco
 
       - name: SonarCloud Scan
         uses: sonarsource/sonarcloud-github-action@v3.0.0
