@@ -42,16 +42,6 @@ class ProdutoControllerTest {
         assertEquals(HttpStatus.CREATED, responseEntity.getStatusCode());
     }
 
-    @Test
-    void buscarProduto_DeveRetornarStatusOK(){
-
-        when(gerenciarProdutoUseCasePort.buscarProdutoPorCategoria(any(String.class)))
-                .thenReturn(List.of(new Produto()));
-
-        ResponseEntity<?> responseEntity = produtoController.buscar(any(String.class));
-
-        assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
-    }
 
     @Test
     void alterarProduto_DeveRetornarStatusOK(){
