@@ -65,8 +65,29 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
 
-      - name: Build and Test
-        run: mvn clean verify
+      - name: Prepare JaCoCo Badge
+        id: jacoco-prepare
+        run: |
+          mvn jacoco:prepare-agent
+
+      - name: Test Execution
+        run: mvn test
+
+      - name: Genarate JaCoCo Badge
+        id: jacoco
+        run: |
+          mvn jacoco:report
+
+      - name: Log coverage percentage
+        run: |
+          echo "Coverage = ${{ steps.jacoco.outputs.coverage }}"
+          echo "Branch coverage = ${{ steps.jacoco.outputs.branches }}"
+
+      - name: Upload JaCoCo coverage report
+        uses: actions/upload-artifact@v4
+        with:
+          name: jacoco-report
+          path: target/site/jacoco/
 
       - name: SonarCloud Scan
         run: |
