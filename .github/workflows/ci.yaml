@@ -79,9 +79,7 @@ jobs:
       - name: SonarCloud Scan
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: mvn clean verify sonar:sonar
-        with:
-          args:
+        run: mvn clean verify sonar:sonar \
             -Dsonar.token=${{ secrets.SONAR_TOKEN }} \
             -Dsonar.host.url=https://sonarcloud.io \
             -Dsonar.organization=shogun-lanches \
