@@ -65,7 +65,8 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
 
-      - run: mvn test
+      - name: Maven clean install
+        run: mvn clean install
 
       - name: Valida diretorio
         run: ls -la
