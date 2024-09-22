@@ -69,6 +69,10 @@ jobs:
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: mvn clean verify sonar:sonar
+        with:
+          args: >
+            -Dsonar.host.url=https://sonarcloud.io
+          
 
       - name: Valida diretorio
         run: ls -la
