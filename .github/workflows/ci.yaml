@@ -76,11 +76,6 @@ jobs:
               cd target/site/jacoco
               ls -la
 
-      - name: Verify Sonar Cloud
-        run: |
-              mvn clean verify sonar:sonar \
-              -Dsonar.token=${{ secrets.SONAR_TOKEN }}
-
       - name: SonarCloud Scan
         uses: sonarsource/sonarcloud-github-action@v3.0.0
         env:
