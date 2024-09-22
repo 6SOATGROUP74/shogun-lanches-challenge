@@ -33,11 +33,12 @@ public class ValidarPagamentoPedidoUseCase implements ValidarPagamentoPedidoUseC
     @Override
     public Pagamento execute(Pagamento pagamento) {
         Pedido pedido = listarPedidosUseCasePort.listarPorCodReferencia(pagamento.getPedido().getCodReferenciaPedido());
-        Pagamento pagamentoAtualizado = buscarPagamentoAdapterPort.buscar(pedido.getIdPagamento());
 
         if(Objects.isNull(pedido)){
             throw new PedidoNotFoundException("Pedido nao localizado.");
         }
+
+        Pagamento pagamentoAtualizado = buscarPagamentoAdapterPort.buscar(pedido.getIdPagamento());
 
         if(Objects.isNull(pagamentoAtualizado)){
             throw new PagamentoNotFoundException("Pagamento nao localizado.");
