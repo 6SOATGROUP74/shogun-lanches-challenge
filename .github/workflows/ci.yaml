@@ -77,7 +77,14 @@ jobs:
               ls -la
 
       - name: SonarCloud Scan
-        uses: SonarSource/sonarcloud-github-action@v3.0.0
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        run: mvn clean verify sonar:sonar
+        with:
+          args:
+            -Dsonar.token=${{ secrets.SONAR_TOKEN }} \
+            -Dsonar.host.url=https://sonarcloud.io \
+            -Dsonar.organization=shogun-lanches \
+            -Dsonar.projectKey=6SOATGROUP74_shogun-lanches-challenge
+
 
