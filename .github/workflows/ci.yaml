@@ -72,15 +72,18 @@ jobs:
         run: ls -la
 
       - name: Acessa pasta jacoco
-        run: cd target/site/jacoco
+        run: |
+              cd target/site/jacoco
+              ls -la
 
-      - name: Valida diretorio jacoco
-        run: ls -la
+      - name: Sonar cobertura test unit
+        run: mvn sonar:sonar -Pcoverag
 
       - name: SonarCloud Scan
         uses: sonarsource/sonarcloud-github-action@v3.0.0
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        run: maven sonar:sonar -Dsonar.token=${{ secrets.SONAR_TOKEN }}
 
       - name: Upload Jacoco coverage report
         if: always()
