@@ -129,7 +129,7 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
-				<version>3.2.5</version> <!-- Use a versão correspondente ao seu projeto -->
+				<version>3.2.5</version>
 				<configuration>
 					<executable>true</executable>
 				</configuration>
