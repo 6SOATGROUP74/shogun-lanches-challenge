@@ -65,8 +65,10 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
 
-      - name: Maven clean install
-        run: mvn test jacoco:report
+      - name: Execute mvn test jacoco report
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        run: mvn clean verify sonar:sonar
 
       - name: Valida diretorio
         run: ls -la
@@ -76,8 +78,8 @@ jobs:
               cd target/site/jacoco
               ls -la
 
-      - name: SonarCloud Scan
-        uses: sonarsource/sonarcloud-github-action@v2.1.0
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+  #    - name: SonarCloud Scan
+  #      uses: sonarsource/sonarcloud-github-action@v2.1.0
+  #      env:
+  #        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
