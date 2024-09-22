@@ -81,8 +81,10 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: mvn sonar:sonar \
             -Dsonar.token=${{ secrets.SONAR_TOKEN }} \
-            -Dsonar.host.url=https://sonarcloud.io \
             -Dsonar.organization=shogun-lanches \
             -Dsonar.projectKey=6SOATGROUP74_shogun-lanches-challenge
+
+
+        mvn sonar:sonar \     -Dsonar.token=6c47b7398c6456d92dcacf1b3abc7767a5229df8 \     -Dsonar.host.url=https://sonarcloud.io \     -Dsonar.organization=shogun-lanches \     -Dsonar.projectKey=6SOATGROUP74_shogun-lanches-challenge
 
 
