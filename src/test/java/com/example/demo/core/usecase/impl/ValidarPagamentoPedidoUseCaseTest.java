@@ -82,8 +82,6 @@ class ValidarPagamentoPedidoUseCaseTest {
 
     }
 
-
-
     Pagamento buildPagamento(){
         Pedido pedido = new Pedido();
         pedido.setIdPagamento(1L);

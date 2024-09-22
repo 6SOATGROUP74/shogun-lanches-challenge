@@ -39,14 +39,6 @@ public class ProdutoController {
                 gerenciarProdutoUseCasePort.salvar(ProdutoMapper.INSTANCE.mapFrom(request))));
     }
 
-    @GetMapping("/{categoria}")
-    public ResponseEntity<List<ProdutoResponse>> buscar(@PathVariable("categoria") final String categoria){
-
-        return ResponseEntity.ok().body(
-                ProdutoResponseMapper.INSTANCE.mapFrom(
-                        gerenciarProdutoUseCasePort.buscarProdutoPorCategoria(categoria)));
-    }
-
     @PatchMapping("/{idProduto}")
     public ResponseEntity<?> alterar(@RequestBody @Valid ProdutoRequest request,
                                      @PathVariable("idProduto") final Long idProduto){

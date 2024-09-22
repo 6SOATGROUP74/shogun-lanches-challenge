@@ -7,8 +7,8 @@ import com.example.demo.infrastructure.repository.presenter.ClienteEntityMapper;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
-@AllArgsConstructor
 @Component
+@AllArgsConstructor
 public class IncluirClienteAdapter implements IncluirClienteAdapterPort {
 
     private final ClienteRepository clienteRepository;
