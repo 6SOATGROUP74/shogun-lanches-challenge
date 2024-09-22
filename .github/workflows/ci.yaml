@@ -71,8 +71,11 @@ jobs:
       - name: Valida diretorio
         run: ls -la
 
-      - name: Valida arquivos Jacoco
+      - name: Acessa pasta jacoco
         run: cd target/site/jacoco
+
+      - name: Valida diretorio jacoco
+        run: ls -la
 
       - name: SonarCloud Scan
         uses: sonarsource/sonarcloud-github-action@v3.0.0
