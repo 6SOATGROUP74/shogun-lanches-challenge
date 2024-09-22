@@ -65,13 +65,10 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
 
-      - name: Maven test
-        run: mvn test
-
       - name: SonarCloud Scan
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: mvn -B verify sonar:sonar -Dsonar.projectKey=6SOATGROUP74_shogun-lanches-challenge  -Dsonar.organization=shogun-lanches -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=$SONAR_TOKEN
+        run: mvn -B verify sonar:sonar -Dsonar.projectKey=6SOATGROUP74_shogun-lanches-challenge  -Dsonar.organization=shogun-lanches -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=$SONAR_TOKEN -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml
 
 
 
