@@ -14,7 +14,7 @@ import org.mockito.MockitoAnnotations;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.*;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 class PagarPedidoUseCaseTest {
 
@@ -49,6 +49,23 @@ class PagarPedidoUseCaseTest {
 
         assertThrows(PedidoNotFoundException.class, () -> pagarPedidoUseCase.checkout(buildPagamento()));
 
+
+    }
+
+    @Test
+    void checkout_DeveRetornarUmPagamentoValido(){
+
+        Pagamento pagamentoRequest = buildPagamento();
+
+        Pagamento pagamentoProcessado = new Pagamento();
+        Pagamento dadosPagamento = new Pagamento();
+        dadosPagamento.setIdPagamento(1L);
+
+        when(buscarPedidoAdapterPort.execute(eq(pagamentoRequest.getNumeroPedido()))).thenReturn(CommonsMock.buildPedido());
+        when(pagarPedidoPagbankAdapter.pagar(eq(pagamentoRequest))).thenReturn(pagamentoProcessado);
+        when(salvarPagamentoAdapterPort.salvar(eq(pagamentoProcessado))).thenReturn(dadosPagamento);
+
+        assertNotNull(pagarPedidoUseCase.checkout(pagamentoRequest));
 
     }
 
