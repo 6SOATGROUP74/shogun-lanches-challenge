@@ -1,6 +1,5 @@
 package com.example.demo.adapter.gateway.interfaces.impl;
 
-import com.example.demo.core.domain.Pedido;
 import com.example.demo.infrastructure.repository.PedidoRepository;
 import com.example.demo.infrastructure.repository.entity.PedidoEntity;
 import org.junit.jupiter.api.BeforeEach;
@@ -9,17 +8,19 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.ArgumentMatchers.any;
+import java.util.Optional;
+
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.when;
 
-class AtualizarPedidoAdapterTest {
+class PedidoEmPreparacaoAdapterTest {
 
     @Mock
     private PedidoRepository repository;
 
     @InjectMocks
-    private AtualizarPedidoAdapter adapter;
+    private PedidoEmPreparacaoAdapter pedidoEmPreparacaoAdapter;
 
     @BeforeEach
     void setup(){
@@ -28,8 +29,12 @@ class AtualizarPedidoAdapterTest {
 
     @Test
     void execute_NaoDeveRetornarException() {
-        when(repository.save(any(PedidoEntity.class))).thenReturn(new PedidoEntity());
-        assertDoesNotThrow(() -> adapter.execute(any(Pedido.class)));
-    }
+        when(repository.findById(anyLong()))
+                .thenReturn(Optional.of(new PedidoEntity()));
 
+        when(repository.save(any(PedidoEntity.class)))
+                .thenReturn(new PedidoEntity());
+
+        assertDoesNotThrow(() -> pedidoEmPreparacaoAdapter.execute(anyLong()));
+    }
 }

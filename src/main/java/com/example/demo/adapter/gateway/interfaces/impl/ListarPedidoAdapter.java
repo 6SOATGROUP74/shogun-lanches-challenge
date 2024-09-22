@@ -12,9 +12,8 @@ import java.util.List;
 @Component
 public class ListarPedidoAdapter implements ListarPedidosAdapterPort {
 
-    private PedidoRepository repository;
+    private final PedidoRepository repository;
 
-    @Autowired
     public ListarPedidoAdapter(PedidoRepository repository) {
         this.repository = repository;
     }
