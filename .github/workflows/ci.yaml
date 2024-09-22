@@ -59,14 +59,14 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Maven test
-        run: mvn test
-
       - name: Set up JDK 17
         uses: actions/setup-java@v3
         with:
           distribution: 'temurin'
           java-version: '17'
+
+      - name: Maven test
+        run: mvn test
 
       - name: SonarCloud Scan
         env:
