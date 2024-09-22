@@ -65,10 +65,28 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
 
-      - name: SonarCloud Scan
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: mvn -B verify sonar:sonar -Dsonar.projectKey=6SOATGROUP74_shogun-lanches-challenge  -Dsonar.organization=shogun-lanches -Dsonar.host.url=https://sonarcloud.io -Dsonar.token=$SONAR_TOKEN -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml
+      - name: Prepare JaCoCo Badge
+        id: jacoco-prepare
+        run: |
+          mvn jacoco:prepare-agent
 
+      - name: Test Execution
+        run: mvn test
+
+      - name: Genarate JaCoCo Badge
+        id: jacoco
+        run: |
+          mvn jacoco:report
+
+      - name: Upload JaCoCo coverage report
+        uses: actions/upload-artifact@v4
+        with:
+          name: jacoco-report
+          path: target/site/jacoco/
+
+      - name: SonarCloud Scan
+        run: |
+          mvn sonar:sonar -Dsonar.token=${{ secrets.SONAR_TOKEN }} -Dsonar.projectKey=6SOATGROUP74_shogun-lanches-challenge -Dsonar.organization=shogun-lanches \
+          -Dsonar.host.url=https://sonarcloud.io -Dsonar.qualitygate.wait=true -Dsonar.sources=src/main -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml
 
 
