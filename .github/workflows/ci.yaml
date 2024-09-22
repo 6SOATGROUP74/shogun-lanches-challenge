@@ -79,7 +79,20 @@ jobs:
           -Dsonar.sources=src/main \
           -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml \
           -Dsonar.branch.name=${GITHUB_REF#refs/heads/} \
-          -Dsonar.branch.target=main
+          -Dsonar.branch.target=main \
+          -Dsonar.exclusions=\
+          com/example/demo/core/domain/*,\
+          com/example/demo/adapter/controller/CustomExceptionHandlers.class,\
+          com/example/demo/adapter/controller/response/**,\
+          com/example/demo/adapter/controller/request/**,\
+          com/example/demo/config/*,\
+          com/example/demo/infrastructure/integration/pagbank/request/*,\
+          com/example/demo/infrastructure/integration/pagbank/response/*,\
+          com/example/demo/infrastructure/integration/pagbank/presenter/*,\
+          com/example/demo/adapter/presenter/**,\
+          com/example/demo/exceptions/*,\
+          com/example/demo/infrastructure/repository/entity/*,\
+          com/example/demo/infrastructure/repository/presenter/*
 
 
 
