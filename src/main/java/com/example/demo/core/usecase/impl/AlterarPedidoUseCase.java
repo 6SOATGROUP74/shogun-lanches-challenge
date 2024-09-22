@@ -15,7 +15,8 @@ public class AlterarPedidoUseCase implements AlterarPedidoUseCasePort {
 
 
     public AlterarPedidoUseCase(AtualizarPedidoAdapterPort atualizarPedidoAdapterPort, BuscarPedidoUseCasePort buscarPedidoUseCasePort) {
-        this.atualizarPedidoAdapterPort = atualizarPedidoAdapterPort;this.buscarPedidoUseCasePort = buscarPedidoUseCasePort;
+        this.atualizarPedidoAdapterPort = atualizarPedidoAdapterPort;
+        this.buscarPedidoUseCasePort = buscarPedidoUseCasePort;
     }
 
     @Override
