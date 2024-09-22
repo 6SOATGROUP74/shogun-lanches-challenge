@@ -66,13 +66,7 @@ jobs:
           java-version: '17'
 
       - name: Execute mvn test jacoco report
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: mvn clean verify sonar:sonar
-        with:
-          args:
-            -Dsonar.host.url=https://sonarcloud.io
-          
+        run: mvn test jacoco:report
 
       - name: Valida diretorio
         run: ls -la
@@ -82,8 +76,8 @@ jobs:
               cd target/site/jacoco
               ls -la
 
-  #    - name: SonarCloud Scan
-  #      uses: sonarsource/sonarcloud-github-action@v2.1.0
-  #      env:
-  #        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@v3.0.0
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
