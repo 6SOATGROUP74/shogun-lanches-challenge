@@ -99,6 +99,19 @@
 		</dependency>
 
 		<dependency>
+			<groupId>org.jacoco</groupId>
+			<artifactId>jacoco-maven-plugin</artifactId>
+			<version>0.8.12</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-engine</artifactId>
+			<version>5.10.0</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
 			<groupId>com.amazonaws</groupId>
 			<artifactId>aws-java-sdk-cognitoidp</artifactId>
 			<version>1.12.130</version>
@@ -157,6 +170,44 @@
 						</path>
 					</annotationProcessorPaths>
 				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<version>0.8.12</version> <!-- Verifique a versão mais recente -->
+				<executions>
+					<execution>
+						<goals>
+							<goal>prepare-agent</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>report</id>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>report</goal>
+						</goals>
+						<configuration>
+							<excludes>
+								<exclude>com/example/demo/core/domain/*</exclude>
+								<exclude>com/example/demo/adapter/controller/CustomExceptionHandlers.class</exclude>
+								<exclude>com/example/demo/adapter/controller/response/**</exclude>
+								<exclude>com/example/demo/adapter/controller/request/**</exclude>
+								<exclude>com/example/demo/config/*</exclude>
+								<exclude>com/example/demo/infrastructure/integration/pagbank/request/*</exclude>
+								<exclude>com/example/demo/infrastructure/integration/pagbank/response/*</exclude>
+								<exclude>com/example/demo/infrastructure/integration/pagbank/presenter/*</exclude>
+
+								<exclude>com/example/demo/adapter/presenter/**</exclude>
+								<exclude>com/example/demo/exceptions/*</exclude>
+								<exclude>com/example/demo/infrastructure/repository/entity/*</exclude>
+								<exclude>com/example/demo/infrastructure/repository/presenter/*</exclude>
+
+							</excludes>
+						</configuration>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>

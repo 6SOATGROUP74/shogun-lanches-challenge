@@ -15,6 +15,7 @@ public class IncluirClienteAdapter implements IncluirClienteAdapterPort {
 
     @Override
     public Cliente execute(Cliente cliente) {
-        return ClienteEntityMapper.INSTANCE.mapFrom(clienteRepository.save(ClienteEntityMapper.INSTANCE.mapFrom(cliente)));
+        return ClienteEntityMapper.INSTANCE.mapFrom(
+                clienteRepository.save(ClienteEntityMapper.INSTANCE.mapFrom(cliente)));
     }
 }

@@ -16,6 +16,9 @@ public class Cliente {
         this.dataCadastro = dataCadastro;
     }
 
+    public Cliente() {
+    }
+
     public Cliente(String nome, Long idCliente, String cpf, String email) {
         this.nome = nome;
         this.idCliente = idCliente;
