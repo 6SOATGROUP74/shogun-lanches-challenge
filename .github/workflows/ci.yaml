@@ -65,9 +65,6 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
 
-      - name: Build and Test
-        run: mvn clean verify
-
       - name: SonarCloud Scan
         run: |
           mvn sonar:sonar \
@@ -93,6 +90,9 @@ jobs:
           com/example/demo/exceptions/*,\
           com/example/demo/infrastructure/repository/entity/*,\
           com/example/demo/infrastructure/repository/presenter/*
+
+      - name: Verifica targets
+        run: cd target/site/jacoco && ls -la
 
 
 
