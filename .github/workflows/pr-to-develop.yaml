@@ -54,7 +54,7 @@ jobs:
         git config --global user.name 'github-actions[bot]'
         git config --global user.email 'github-actions[bot]@users.noreply.github.com'
 
-    - name: Create Pull Request
+    - name: Create Pull Request to develop
       uses: peter-evans/create-pull-request@v5
       with:
         branch: 'develop'
