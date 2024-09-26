@@ -89,6 +89,14 @@ jobs:
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
 
+      - name: Create branch release
+        run: |
+          git checkout -b release
+
+      - name: Push release branch
+        run: |
+          git push origin release
+
       - name: Create Pull Request to release
         uses: peter-evans/create-pull-request@v7
         with:
