@@ -105,7 +105,7 @@ jobs:
         uses: peter-evans/create-pull-request@v7
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          branch: ${{ github.ref }}
+          branch: main
           base: release
           title: 'PR : Aberto via actions'
           body: 'Bora Brasil !!!.'
