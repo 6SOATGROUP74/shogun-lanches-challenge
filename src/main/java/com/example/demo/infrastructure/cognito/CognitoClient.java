@@ -12,6 +12,7 @@ import software.amazon.awssdk.services.cognitoidentityprovider.model.*;
 @AllArgsConstructor
 public class CognitoClient {
 
+
     private final CognitoIdentityProviderClient client;
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
     private final CognitoProperties properties;
