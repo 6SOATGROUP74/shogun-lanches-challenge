@@ -55,9 +55,8 @@ jobs:
         git config --global user.email 'github-actions[bot]@users.noreply.github.com'
 
     - name: Create Pull Request to develop
-      uses: peter-evans/create-pull-request@v5
+      uses: peter-evans/create-pull-request@v7
       with:
-        base: 'develop'
         branch: ${{ github.ref_name}}
         title: 'PR : Aberto via actions'
         body: 'Bora Brasil !!!.'
