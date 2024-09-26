@@ -59,3 +59,4 @@ jobs:
       with:
         title: 'PR : Aberto via actions'
         body: 'Bora Brasil !!!.'
+        branch: develop
