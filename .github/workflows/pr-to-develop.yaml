@@ -57,6 +57,7 @@ jobs:
     - name: Create Pull Request to develop
       uses: peter-evans/create-pull-request@v5
       with:
-        branch: 'develop'
+        base: 'develop'
+        branch: ${{ github.head_ref }}
         title: 'PR : Aberto via actions'
         body: 'Bora Brasil !!!.'
