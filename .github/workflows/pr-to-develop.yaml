@@ -58,6 +58,6 @@ jobs:
       uses: peter-evans/create-pull-request@v5
       with:
         base: 'develop'
-        branch: ${{ github.head_ref }}
+        branch: ${{ github.ref_name}}
         title: 'PR : Aberto via actions'
         body: 'Bora Brasil !!!.'
