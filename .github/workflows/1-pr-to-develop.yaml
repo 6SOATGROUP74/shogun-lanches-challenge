@@ -26,9 +26,6 @@ jobs:
       - name: Build with Maven
         run: mvn clean install -DskipTests
 
-      - name: Run Tests
-        run: mvn test
-
   test:
     runs-on: ubuntu-latest
     steps:
@@ -62,8 +59,8 @@ jobs:
       uses: peter-evans/create-pull-request@v7
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
-        branch: ${{ github.ref }}  # Branch de origem
-        base: develop  # Branch de destino (PR para develop)
+        branch: ${{ github.ref }}
+        base: develop
         title: 'PR : Aberto via actions'
         body: 'Bora Brasil !!!.'
 
