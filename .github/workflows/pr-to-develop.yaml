@@ -58,9 +58,8 @@ jobs:
       uses: peter-evans/create-pull-request@v7
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
-        branch: ${GITHUB_REF#refs/heads/}  # Branch de origem
+        branch: ${{ github.ref }}  # Branch de origem
         base: develop  # Branch de destino (PR para develop)
         title: 'PR : Aberto via actions'
         body: 'Bora Brasil !!!.'
-        create: true  # Garante que o PR será criado
-        merge: false   # Impede merge automático (pode ser omitido)
+
