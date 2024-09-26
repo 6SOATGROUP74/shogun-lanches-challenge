@@ -62,4 +62,5 @@ jobs:
         base: develop  # Branch de destino (PR para develop)
         title: 'PR : Aberto via actions'
         body: 'Bora Brasil !!!.'
-
+        create: true  # Garante que o PR será criado
+        merge: false   # Impede merge automático (pode ser omitido)
