@@ -57,6 +57,5 @@ jobs:
     - name: Create Pull Request to develop
       uses: peter-evans/create-pull-request@v7
       with:
-        branch: develop
         title: 'PR : Aberto via actions'
         body: 'Bora Brasil !!!.'
