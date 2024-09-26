@@ -57,6 +57,9 @@ jobs:
     - name: Create Pull Request to develop
       uses: peter-evans/create-pull-request@v7
       with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        branch: ${GITHUB_REF#refs/heads/}  # Branch de origem
+        base: develop  # Branch de destino (PR para develop)
         title: 'PR : Aberto via actions'
         body: 'Bora Brasil !!!.'
-        branch: develop
+
