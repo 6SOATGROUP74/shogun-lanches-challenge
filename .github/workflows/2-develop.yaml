@@ -1,4 +1,4 @@
-name: "1 - Develop - Build and publish"
+name: "2 - Main - Build and publish"
 
 permissions:
   contents: write
@@ -9,7 +9,7 @@ on:
     types:
       - closed
     branches:
-      - develop
+      - main
 
 jobs:
   build:
@@ -43,7 +43,7 @@ jobs:
       - name: Run Tests
         run: mvn test
 
-  publish-docker-hub-dev:
+  publish-docker-hub:
     needs: [test, build]
     runs-on: ubuntu-latest
     steps:
@@ -76,36 +76,36 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/${{ secrets.DOCKER_HUB_REPOSITORY }}:dev
+          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/${{ secrets.DOCKER_HUB_REPOSITORY }}:prod
 
-
-  create-pr:
-    needs: [build, test, publish-docker-hub-dev]
+  deploy:
+    name: Deploy to EKS
     runs-on: ubuntu-latest
-    if: success()
-
     steps:
-      - name: Checkout source code
-        uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v4
 
-      - name: Configure Git
-        run: |
-          git config --global user.name 'github-actions[bot]'
-          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-
-      - name: Create branch release
-        run: |
-          git checkout -b release
-
-      - name: Push release branch
-        run: |
-          git push origin release
-
-      - name: Create Pull Request to release
-        uses: peter-evans/create-pull-request@v7
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          branch: main
-          base: release
-          title: 'PR : Aberto via actions'
-          body: 'Bora Brasil !!!.'
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
+          aws-region: ${{ secrets.AWS_REGION }}
+
+      - name: Update kube config
+        run: aws eks update-kubeconfig --name shogun-cluster-eks --region us-east-1
+
+      - name: Valida diretorio
+        run: ls -la
+
+      - name: Deploy to EKS
+        run: |
+          kubectl apply -f infra/app/app-configmap.yaml
+          kubectl apply -f infra/app/app-deployment.yaml
+          kubectl apply -f infra/app/app-hpa.yaml
+          kubectl apply -f infra/app/app-nlb.yaml
+          kubectl apply -f infra/app/app-opaque.yaml
+          kubectl apply -f infra/app/app-svc.yaml
+          kubectl apply -f infra/app/app-rds.yaml
+          kubectl apply -f infra/service-account.yaml

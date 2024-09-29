@@ -60,7 +60,7 @@ jobs:
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
         branch: ${{ github.ref }}
-        base: develop
+        base: main
         title: 'PR : Aberto via actions'
         body: 'Bora Brasil !!!.'
 
