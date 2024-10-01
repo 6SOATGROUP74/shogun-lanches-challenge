@@ -1,4 +1,4 @@
-name: "2 - Main - Build and publish"
+name: "Build and publish"
 
 permissions:
   contents: write
