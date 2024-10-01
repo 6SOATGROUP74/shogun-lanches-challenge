@@ -14,6 +14,7 @@ spec:
       labels:
         app: app-pod
     spec:
+      serviceAccountName: rds-access-sa
       containers:
         - name: app-container
           image: igoryy/fiap-6soat:prod

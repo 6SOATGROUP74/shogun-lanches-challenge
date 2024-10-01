@@ -1,6 +1,5 @@
 package com.example.demo.core.usecase.impl;
 
-import com.example.demo.adapter.gateway.interfaces.cliente.ClienteCognitoAdapterPort;
 import com.example.demo.adapter.gateway.interfaces.cliente.IncluirClienteAdapterPort;
 import com.example.demo.adapter.gateway.interfaces.cliente.RecuperarClienteAdapterPort;
 import com.example.demo.core.domain.Cliente;
@@ -23,8 +22,6 @@ class IncluirClienteUseCaseTest {
     @Mock
     private RecuperarClienteAdapterPort recuperarClienteAdapterPort;
 
-    @Mock
-    private ClienteCognitoAdapterPort clienteCognitoAdapterPort;
 
     @InjectMocks
     private IncluirClienteUseCase incluirClienteUseCase;
@@ -40,7 +37,6 @@ class IncluirClienteUseCaseTest {
         cliente.setCpf("00000000");
 
         when(recuperarClienteAdapterPort.execute(eq(cliente.getCpf()))).thenReturn(new Cliente());
-        when(clienteCognitoAdapterPort.contains(eq(cliente))).thenReturn(true);
 
         assertThrows(ClienteDuplicadoException.class, () -> incluirClienteUseCase.execute(cliente));
 
@@ -54,8 +50,6 @@ class IncluirClienteUseCaseTest {
         cliente.setCpf("00000000");
 
         when(recuperarClienteAdapterPort.execute(eq(cliente.getCpf()))).thenReturn(null);
-        when(clienteCognitoAdapterPort.contains(eq(cliente))).thenReturn(false);
-        when(clienteCognitoAdapterPort.incluir(eq(cliente))).thenReturn(true);
 
 
         when(incluirClienteAdapterPort.execute(eq(cliente))).thenReturn(new Cliente());
