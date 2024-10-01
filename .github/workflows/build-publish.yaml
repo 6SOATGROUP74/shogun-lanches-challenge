@@ -80,6 +80,7 @@ jobs:
 
   deploy:
     name: Deploy to EKS
+    needs: [publish-docker-hub]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
