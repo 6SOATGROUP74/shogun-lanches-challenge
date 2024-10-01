@@ -1,7 +1,7 @@
 -- Insere clientes
 INSERT INTO db_soat.tb_cliente (id_cliente, nome, data_cadastro, email, cpf) VALUES(1, 'GUEST', '2024-01-31 20:59:40', 'guest@shogunlanches.com', '57209668039');
 INSERT INTO db_soat.tb_cliente (id_cliente, nome, data_cadastro, email, cpf) VALUES(2, 'Rodrigo', '2024-05-16 20:03:21', 'rodrigo@hotmail.com', '02581635002');
-INSERT INTO db_soat.tb_cliente (id_cliente, nome, data_cadastro, email, cpf) VALUES(2, 'Jane', '2024-05-26 21:00:02', 'jane@hotmail.com', '02781593036');
+INSERT INTO db_soat.tb_cliente (id_cliente, nome, data_cadastro, email, cpf) VALUES(3, 'Jane', '2024-05-26 21:00:02', 'jane@hotmail.com', '02781593036');
 INSERT INTO db_soat.tb_cliente (id_cliente, nome, data_cadastro, email, cpf) VALUES(3, 'Pedro', '2024-05-26 21:00:22', 'pedro@hotmail.com', '96382852066');
 INSERT INTO db_soat.tb_cliente (id_cliente, nome, data_cadastro, email, cpf) VALUES(4, 'Igor', '2024-05-26 21:00:49', 'igor@hotmail.com', '13407834012');
 INSERT INTO db_soat.tb_cliente (id_cliente, nome, data_cadastro, email, cpf) VALUES(7, 'Maria', '2024-05-26 21:01:21', 'maria@hotmail.com', '81818766019');
