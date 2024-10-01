@@ -1,9 +1,11 @@
 -- Insere clientes
-INSERT INTO db_soat.tb_cliente (id_cliente, nome, data_cadastro, email, cpf) VALUES(1, 'Rodrigo', '2024-05-26 20:59:40', 'rodrigo@hotmail.com', '57209668039');
+INSERT INTO db_soat.tb_cliente (id_cliente, nome, data_cadastro, email, cpf) VALUES(1, 'GUEST', '2024-01-31 20:59:40', 'guest@shogunlanches.com', '57209668039');
+INSERT INTO db_soat.tb_cliente (id_cliente, nome, data_cadastro, email, cpf) VALUES(2, 'Rodrigo', '2024-05-16 20:03:21', 'rodrigo@hotmail.com', '02581635002');
 INSERT INTO db_soat.tb_cliente (id_cliente, nome, data_cadastro, email, cpf) VALUES(2, 'Jane', '2024-05-26 21:00:02', 'jane@hotmail.com', '02781593036');
 INSERT INTO db_soat.tb_cliente (id_cliente, nome, data_cadastro, email, cpf) VALUES(3, 'Pedro', '2024-05-26 21:00:22', 'pedro@hotmail.com', '96382852066');
 INSERT INTO db_soat.tb_cliente (id_cliente, nome, data_cadastro, email, cpf) VALUES(4, 'Igor', '2024-05-26 21:00:49', 'igor@hotmail.com', '13407834012');
-INSERT INTO db_soat.tb_cliente (id_cliente, nome, data_cadastro, email, cpf) VALUES(6, 'Maria', '2024-05-26 21:01:21', 'maria@hotmail.com', '81818766019');
+INSERT INTO db_soat.tb_cliente (id_cliente, nome, data_cadastro, email, cpf) VALUES(7, 'Maria', '2024-05-26 21:01:21', 'maria@hotmail.com', '81818766019');
+
 
 -- Insere produtos no banco
 INSERT INTO db_soat.tb_produto (id_produto, categoria, nome, valor, status) VALUES (1, 'bebida', 'coca-cola', 5.00, 1);
@@ -57,8 +59,8 @@ INSERT INTO db_soat.tb_composicao_pedido (id_composicao, id_produto, quantidade,
 INSERT INTO db_soat.tb_composicao_pedido (id_composicao, id_produto, quantidade, preco_unitario, numero_pedido) VALUES(25, 14, 1, 5.00, 20);
 
 -- Insere pagamentos
-INSERT INTO db_soat.tb_pagamento (id_pagamento, numero_pedido, valor_total, tipo_do_pagamento, status, data_pagamento) VALUES(1, 15, 53.00, 'QR Code Mercado Pago', 'APROVADO', '2024-05-28 00:35:02');
-INSERT INTO db_soat.tb_pagamento (id_pagamento, numero_pedido, valor_total, tipo_do_pagamento, status, data_pagamento) VALUES(2, 16, 34.00, 'QR Code Mercado Pago', 'APROVADO', '2024-05-28 00:35:37');
-INSERT INTO db_soat.tb_pagamento (id_pagamento, numero_pedido, valor_total, tipo_do_pagamento, status, data_pagamento) VALUES(3, 17, 33.00, 'QR Code Mercado Pago', 'APROVADO', '2024-05-28 00:35:42');
-INSERT INTO db_soat.tb_pagamento (id_pagamento, numero_pedido, valor_total, tipo_do_pagamento, status, data_pagamento) VALUES(4, 18, 37.00, 'QR Code Mercado Pago', 'APROVADO', '2024-05-28 00:35:46');
-INSERT INTO db_soat.tb_pagamento (id_pagamento, numero_pedido, valor_total, tipo_do_pagamento, status, data_pagamento) VALUES(5, 19, 20.00, 'QR Code Mercado Pago', 'APROVADO', '2024-05-28 00:35:50');
+INSERT INTO db_soat.tb_pagamento (id_pagamento, numero_pedido, valor_total, tipo_do_pagamento, status, data_pagamento) VALUES(1, 15, 53.00, 'QR Code Pagbank', 'APROVADO', '2024-05-28 00:35:02');
+INSERT INTO db_soat.tb_pagamento (id_pagamento, numero_pedido, valor_total, tipo_do_pagamento, status, data_pagamento) VALUES(2, 16, 34.00, 'QR Code Pagbank', 'APROVADO', '2024-05-28 00:35:37');
+INSERT INTO db_soat.tb_pagamento (id_pagamento, numero_pedido, valor_total, tipo_do_pagamento, status, data_pagamento) VALUES(3, 17, 33.00, 'QR Code Pagbank', 'APROVADO', '2024-05-28 00:35:42');
+INSERT INTO db_soat.tb_pagamento (id_pagamento, numero_pedido, valor_total, tipo_do_pagamento, status, data_pagamento) VALUES(4, 18, 37.00, 'QR Code Pagbank', 'APROVADO', '2024-05-28 00:35:46');
+INSERT INTO db_soat.tb_pagamento (id_pagamento, numero_pedido, valor_total, tipo_do_pagamento, status, data_pagamento) VALUES(5, 19, 20.00, 'QR Code Pagbank', 'APROVADO', '2024-05-28 00:35:50');
